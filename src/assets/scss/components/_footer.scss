@@ -1,0 +1,16 @@
+.footer {
+    background-color: $black;
+    
+    .inner {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 100px;
+
+        .copyrights {
+            color: $white;
+            font-family: $secondary-font;
+            font-size: $font-size-sm;
+        }
+    }
+}

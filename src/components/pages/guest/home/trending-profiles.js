@@ -9,6 +9,11 @@ const TrendingProfiles = () => (
             <div className="trending"></div>
             <div className="trending"></div>
             <div className="trending"></div>
+            <div className="trending"></div>
+            <div className="trending"></div>
+            <div className="trending"></div>
+            <div className="trending"></div>
+            <div className="trending"></div>
         </div>
     </Fragment>
 )

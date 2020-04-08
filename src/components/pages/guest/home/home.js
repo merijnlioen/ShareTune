@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import Gradient from '../../../shared/gradient'
 import TrendingProfiles from './trending-profiles'
+import Footer from '../../../shared/footer'
 
 const Home = () => (
     <Fragment>
@@ -16,6 +17,8 @@ const Home = () => (
                 <TrendingProfiles />
             </div>
         </div>
+
+        <Footer />
     </Fragment>
 )
 
