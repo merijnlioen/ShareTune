@@ -1,7 +1,11 @@
 import React from 'react'
+import Signout from '../../forms/signout'
 
 const Home = () => (
-    <h1>User home</h1>
+    <div>
+        <h1>User home</h1>
+        <Signout />
+    </div>
 )
 
 export default Home
