@@ -26,14 +26,22 @@ body {
 
 .trending__container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     width: 100%;
     margin-top: 25px;
     grid-gap: 50px;
 
+    @include breakpoint(small) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .trending {
         height: 200px;
         background-color: $primary;
+
+        @include breakpoint(small) {
+            height: 150px;
+        }
     }
 }
 

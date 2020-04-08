@@ -2,6 +2,8 @@ import React, { Fragment } from 'react'
 import Gradient from '../../../shared/gradient'
 import TrendingProfiles from './trending-profiles'
 import Footer from '../../../shared/footer'
+import Search from '../../../shared/search'
+import UniqueSellingpoints from '../../../shared/unique-sellingpoints'
 
 const Home = () => (
     <Fragment>
@@ -14,7 +16,11 @@ const Home = () => (
 
         <div className="content__container">
             <div className="inner">
+                <Search placeholder="Search for Friends, Artists, Songs" />
+
                 <TrendingProfiles />
+
+                <UniqueSellingpoints />
             </div>
         </div>
 

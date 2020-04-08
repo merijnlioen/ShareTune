@@ -7,6 +7,16 @@
         justify-content: space-between;
         height: 100px;
 
+        @include breakpoint(small) {
+            height: 150px;
+            flex-direction: column;
+            justify-content: center;
+            
+            .copyrights {
+                margin-top: 25px;
+            }
+        }
+
         .copyrights {
             color: $white;
             font-family: $secondary-font;

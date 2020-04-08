@@ -1,0 +1,41 @@
+.usps {
+    margin-top: 50px;
+
+    .usp__container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 25px;
+        margin-top: 25px;
+
+        @include breakpoint(small) {
+            display: block;
+        }
+
+        .usp {
+            @include breakpoint(small) {
+                & + .usp {
+                    margin-top: 25px;
+                }
+            }
+            &__image {
+                border-radius: 100%;
+                width: 100px;
+                height: 100px;
+                background-color: $grey;
+            }
+
+            &__title {
+                margin-top: 25px;
+                font-family: $secondary-font;
+                font-size: $font-size-md;
+                font-weight: 700;
+            }
+
+            &__description {
+                margin-top: 10px;
+                font-family: $secondary-font;
+                font-size: $font-size-sm;
+            }
+        }
+    }
+}

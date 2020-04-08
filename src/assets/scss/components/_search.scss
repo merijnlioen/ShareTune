@@ -1,0 +1,14 @@
+.search {
+
+    .search__input {
+        width: 100%;
+        background-color: $grey;
+        margin-bottom: 50px;
+        border: none;
+        padding: 20px;
+        color: $black;
+        font-size: $font-size-md;
+        font-family: $secondary-font;
+        text-transform: uppercase;
+    }
+}
