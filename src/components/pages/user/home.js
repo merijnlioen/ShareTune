@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import Signout from '../../forms/signout'
 
 const Home = () => (
-    <div>
+    <Fragment>
         <h1>User home</h1>
         <Signout />
-    </div>
+    </Fragment>
 )
 
 export default Home

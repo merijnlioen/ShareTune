@@ -1,0 +1,33 @@
+@font-face {
+    font-display: swap;
+    font-family: 'FjallaOne';
+    src: url('/fonts/FjallaOne-Regular.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'NotoSans';
+    src: url('/fonts/NotoSans-Regular.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'NotoSans';
+    src: url('/fonts/NotoSans-Bold.ttf');
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+
+$font-size-sm: 16px;
+$font-size-md: 20px;
+$font-size-lg: 28px;
+$font-size-xlg: 72px;
+
+$primary-font: 'FjallaOne', 'sans-serif';
+$secondary-font: 'NotoSans', 'sans-serif';

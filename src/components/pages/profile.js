@@ -5,7 +5,7 @@ const ProfilePage = () => {
     const { id } = useParams()
 
     return (
-        <div>
+        <div className="inner">
             <h1>Merijn Lioen - {id}</h1>
         </div>
     )

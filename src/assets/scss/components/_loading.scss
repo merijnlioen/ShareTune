@@ -1,0 +1,70 @@
+.loading__container {
+    background-color: $white;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .loader {
+        display: flex;
+        flex-direction: row;
+        height: 100px;
+        align-items: center;
+        margin-bottom: 100px;
+
+        div {
+            width: 10px;
+            background: $primary;
+            margin-left: 10px;
+            border-radius: 100px;
+    
+            &:nth-child(1) {
+                animation-delay: 100ms;
+            }
+    
+            &:nth-child(2) {
+                animation-delay: 200ms;
+            }
+    
+            &:nth-child(3) {
+                animation-delay: 300ms;
+            }
+    
+            &:nth-child(4) {
+                animation-delay: 400ms;
+            }
+    
+            &:nth-child(5) {
+                animation-delay: 500ms;
+            }
+    
+            &:nth-child(6) {
+                animation-delay: 600ms;
+            }
+    
+            &:nth-child(7) {
+                animation-delay: 700ms;
+            }
+    
+            &:nth-child(8) {
+                animation-delay: 800ms;
+            }
+    
+            animation: loading 1.5s infinite;
+        }
+    
+        @keyframes loading {
+            0% {
+                height: 5px;
+            }
+            50% {
+                height: 100px;
+            }
+            100% {
+                height: 5px;
+            }
+        }
+    }
+}

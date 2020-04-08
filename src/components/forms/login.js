@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
 const LoginForm = ({ firebase }) => {
-    const history = useHistory();
+    const history = useHistory()
 
     const createAccount = firebase => {
         const email = document.getElementById('email').value

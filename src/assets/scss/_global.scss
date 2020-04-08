@@ -1,0 +1,21 @@
+body {
+    background-color: $white;
+}
+
+.inner {
+    $width: 1280px;
+    $padding: 20px;
+
+    width: 100%;
+    max-width: calc(#{$width} + #{$padding});
+    padding: 0 $padding;
+    margin: 0 auto;
+}
+
+.page {
+    padding: 50px 0;
+
+    &--user {
+        padding-left: $header-width;
+    }
+}

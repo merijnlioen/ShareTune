@@ -1,0 +1,25 @@
+.logo {
+    color: $black;
+    font-size: $font-size-lg;
+    font-family: $primary-font;
+
+    &--small {
+        font-size: $font-size-md;
+    }
+
+    &--large {
+        font-size: $font-size-xlg;
+    }
+    
+    span {
+        color: $primary;
+    }
+
+    &--white {
+        color: $white;
+
+        span {
+            color: $white;
+        }
+    }
+}
