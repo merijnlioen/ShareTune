@@ -1,5 +1,6 @@
 const initialState = {
-    user: null
+    user: null,
+    isMobile: false
 }
 
 const global = (state = initialState, action) => {
@@ -8,6 +9,11 @@ const global = (state = initialState, action) => {
             return {
                 ...state,
                 user: action.value
+            }
+        case 'UPDATE_IS_MOBILE':
+            return {
+                ...state,
+                isMobile: action.value
             }
         default:
             return state

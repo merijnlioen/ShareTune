@@ -3,13 +3,17 @@ export const updateUser = value => ({
     value
 })
 
+export const updateIsMobile = value => ({
+    type: 'UPDATE_IS_MOBILE',
+    value
+})
+
 
 
 
 
 export const observeAuthChange = firebase => dispatch => {
     firebase.auth.onAuthStateChanged(authUser => {
-        console.log(authUser)
         if(authUser) return dispatch(updateUser(authUser))
         dispatch(updateUser({}))
     })
