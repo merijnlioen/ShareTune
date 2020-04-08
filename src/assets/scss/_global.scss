@@ -36,3 +36,20 @@ body {
         background-color: $primary;
     }
 }
+
+.icon {
+    width: 20px;
+    height: 20px;
+
+    & + .icon {
+        margin-left: 25px;
+    }
+
+    .st0 {
+        fill: none;
+    }
+
+    .st1 {
+        fill: $white;
+    }
+}
