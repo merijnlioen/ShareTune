@@ -31,3 +31,24 @@ $font-size-xlg: 72px;
 
 $primary-font: 'FjallaOne', 'sans-serif';
 $secondary-font: 'NotoSans', 'sans-serif';
+
+
+
+
+.title {
+    font-size: $font-size-xlg;
+    color: $white;
+    font-family: $primary-font;
+}
+
+.subtitle {
+    font-size: $font-size-lg;
+    color: $white;
+    font-family: $secondary-font;
+}
+
+.heading {
+    color: $black;
+    font-family: $primary-font;
+    font-size: $font-size-lg;
+}

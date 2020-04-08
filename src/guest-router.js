@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import { GuestHeader } from './components/shared/header'
-import Home from './components/pages/guest/home'
+import Home from './components/pages/guest/home/home'
 import Login from './components/pages/guest/login'
 import NotFound from './components/pages/not-found'
 
