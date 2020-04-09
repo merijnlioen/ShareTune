@@ -20,6 +20,7 @@ const MainRouter = ({ user, isMobile, updateIsMobile, observeAuthChange }) => {
     useEffect(() => {
         observeAuthChange()
         onResize()
+        console.log(user)
     }, [])
 
     const onResize = () => {
@@ -33,12 +34,14 @@ const MainRouter = ({ user, isMobile, updateIsMobile, observeAuthChange }) => {
     return (
         <Router>
             <Loading isLoading={!user}>
-                <Message />
-                <Switch>
-                    <Route path="/profile/:id" component={ProfilePage} />
-                    {user && Object.keys(user).length <= 0 && <Route path="/" component={GuestRouter} />}
-                    {user && Object.keys(user).length > 0 && <Route path="/" component={UserRouter} />}
-                </Switch>
+                <div className="page">
+                    <Message />
+                    <Switch>
+                        <Route path="/profile/:id" component={ProfilePage} />
+                        {user && Object.keys(user).length <= 0 && <Route path="/" component={GuestRouter} />}
+                        {user && Object.keys(user).length > 0 && <Route path="/" component={UserRouter} />}
+                    </Switch>
+                </div>
             </Loading>
         </Router>
     )

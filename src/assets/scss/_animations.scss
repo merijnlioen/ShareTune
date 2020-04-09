@@ -25,3 +25,35 @@
 .fade-exit-done {
     opacity: .001;
 }
+
+
+.auth-appear {
+    .gradient {
+        transform: translateX(-100%);
+        will-change: transform;
+    }
+    .logo {
+        opacity: .001;
+        will-change: opacity;
+    }
+}
+
+.auth-appear-active {
+    .gradient {
+        transform: translateX(0);
+        transition: 750ms ease-in-out transform;
+    }
+    .logo {
+        opacity: 1;
+        transition: 500ms ease-in-out 500ms;
+    }
+}
+
+.auth-appear-done {
+    .gradient {
+        transform: translateX(0);
+    }
+    .logo {
+        opacity: 1;
+    }
+}

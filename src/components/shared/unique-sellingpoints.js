@@ -3,7 +3,7 @@ import Logo from './logo'
 
 const UniqueSellingpoints = () => (
     <div className="usps">
-        <h3 className="heading">Why <Logo />?</h3>
+        <span className="heading">Why </span><Logo /><span className="heading">?</span>
         <div className="usp__container">
             <div className="usp">
                 <div className="usp__image" />

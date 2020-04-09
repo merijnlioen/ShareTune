@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react'
 import { useHistory } from 'react-router-dom'
 
-const LoginForm = ({ firebase }) => {
+const RegisterForm = ({ firebase }) => {
     const history = useHistory()
 
-    const login = () => {
+    const createAccount = () => {
         const email = document.getElementById('email').value
         const password = document.getElementById('password').value
 
-        firebase.doSignInWithEmailAndPassword(email, password)
+        firebase.doCreateUserWithEmailAndPassword(email, password)
             .then(() => {
                 history.push('/')
             })
@@ -16,12 +16,12 @@ const LoginForm = ({ firebase }) => {
 
     return (
         <Fragment>
-            <h1>Login</h1>
+            <h1>Register</h1>
             <input type="text" id="email" />
             <input type="password" id="password" />
-            <button onClick={() => login()}>Submit</button>
+            <button onClick={() => createAccount()}>Submit</button>
         </Fragment>
     )
 }
 
-export default LoginForm
+export default RegisterForm

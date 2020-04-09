@@ -1,4 +1,6 @@
 .header {
+    background-color: $white;
+
     &--user {
         background: $grey;
         padding: 50px 20px;
@@ -31,12 +33,12 @@
         will-change: color;
         font-size: $font-size-md;
 
-        @include breakpoint(small) {
-            font-size: $font-size-sm;
-        }
-
         &:not(:last-child) {
             margin-right: 40px;
+
+            @include breakpoint(small) {
+                margin-right: 25px;
+            }
         }
 
         &.active {

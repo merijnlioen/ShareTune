@@ -1,7 +1,8 @@
 import React from 'react'
+import classNames from 'classnames'
 
-const Gradient = ({ children }) => (
-    <div className="gradient">
+const Gradient = ({ children, isVertical }) => (
+    <div className={classNames('gradient', { 'gradient--vertical': isVertical } )}>
         {children}
     </div>
 )

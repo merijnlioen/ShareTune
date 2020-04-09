@@ -9,3 +9,17 @@
         @media (max-width: #{$breakpoint-large}) { @content; }
     }
 }
+
+$browser-context: 16;
+
+@function em-calc($pixels, $context: $browser-context) {
+    @if (unitless($pixels)) {
+        $pixels: $pixels * 1px;
+    }
+
+    @if (unitless($context)) {
+        $context: $context * 1px;
+    }
+    
+    @return $pixels / $context * 1em;
+}

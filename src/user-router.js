@@ -6,7 +6,7 @@ import { UserHeader } from './components/shared/header'
 
 const UserRouter = () => (
     <Fragment>
-        <div className="page page--user">
+        <div className="user__container">
             <UserHeader />
             
             <div className="inner">
