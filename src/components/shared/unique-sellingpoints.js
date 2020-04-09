@@ -8,7 +8,7 @@ const UniqueSellingpoints = () => (
             <div className="usp">
                 <div className="usp__image" />
                 <h4 className="usp__title">Easy to use</h4>
-                <p className="usp__description">
+                <p className="text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Cras rutrum nunc magna, vel luctus justo interdum ac.
                     Vestibulum lobortis ipsum ante, vel ultricies quam tincidunt ac.
@@ -18,7 +18,7 @@ const UniqueSellingpoints = () => (
             <div className="usp">
                 <div className="usp__image" />
                 <h4 className="usp__title">Easy to use</h4>
-                <p className="usp__description">
+                <p className="text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Cras rutrum nunc magna, vel luctus justo interdum ac.
                     Vestibulum lobortis ipsum ante, vel ultricies quam tincidunt ac.
@@ -28,7 +28,7 @@ const UniqueSellingpoints = () => (
             <div className="usp">
                 <div className="usp__image" />
                 <h4 className="usp__title">Easy to use</h4>
-                <p className="usp__description">
+                <p className="text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Cras rutrum nunc magna, vel luctus justo interdum ac.
                     Vestibulum lobortis ipsum ante, vel ultricies quam tincidunt ac.

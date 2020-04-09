@@ -1,9 +1,8 @@
 import React from 'react'
-import { withFirebase } from '../../../firebase'
 import { useLocation } from 'react-router-dom'
 import { CSSTransition } from 'react-transition-group'
-import LoginFormBase from '../../forms/login'
-import RegisterFormBase from '../../forms/register'
+import LoginForm from '../../forms/login'
+import RegisterForm from '../../forms/register'
 import Gradient from '../../shared/gradient'
 import Logo from '../../shared/logo'
 
@@ -40,8 +39,5 @@ const Auth = () => {
         </CSSTransition>
     )
 }
-
-const LoginForm = withFirebase(LoginFormBase)
-const RegisterForm = withFirebase(RegisterFormBase)
 
 export default Auth

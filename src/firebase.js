@@ -20,11 +20,9 @@ class Firebase {
         this.auth = app.auth()
     }
 
-    doCreateUserWithEmailAndPassword = (email, password) => {
-        return this.auth.createUserWithEmailAndPassword(email, password)
+    doCreateUserWithEmailAndPassword = (email, password) =>
+        this.auth.createUserWithEmailAndPassword(email, password)
             .then(auth => auth.user.sendEmailVerification())
-            .catch(error => console.error(error))
-    }
 
     doSignInWithEmailAndPassword = (email, password) =>
         this.auth.signInWithEmailAndPassword(email, password)

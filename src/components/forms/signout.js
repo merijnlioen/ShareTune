@@ -11,6 +11,4 @@ const SignoutForm = ({ firebase }) => {
     )
 }
 
-const Signout = withFirebase(SignoutForm)
-
-export default Signout
+export default withFirebase(SignoutForm)

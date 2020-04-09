@@ -23,7 +23,7 @@
 }
 
 
-
+$font-size-xsm: em-calc(12px);
 $font-size-sm: em-calc(16px);
 $font-size-md: em-calc(20px);
 $font-size-lg: em-calc(28px);
@@ -51,4 +51,15 @@ $secondary-font: 'NotoSans', 'sans-serif';
     color: $black;
     font-family: $primary-font;
     font-size: $font-size-lg;
+
+    &--primary {
+        color: $primary;
+    }
+}
+
+.text {
+    font-family: $secondary-font;
+    color: $black;
+    font-size: $font-size-sm;
+    line-height: calc(#{$font-size-sm} * 1.5);
 }

@@ -87,3 +87,90 @@ body {
         }
     }
 }
+
+form {
+    width: 100%;
+    max-width: 500px;
+    padding: 0 25px;
+
+    .heading {
+        margin-bottom: 10px;
+    }
+
+    .text {
+        margin-bottom: 50px;
+    }
+
+    .form__row {
+        position: relative;
+
+        .row__label,
+        .row__error {
+            position: absolute;
+            font-family: $secondary-font;
+            text-transform: capitalize;
+            background-color: $white;
+
+            // form input padding + border
+            padding: 0 12px;
+        }
+
+        .row__label {
+            transform: translateY(-50%) translateX(10px);
+            color: $black;
+            font-size: $font-size-sm;
+        }
+
+        .row__error {
+            color: $red;
+            right: 0;
+            font-size: $font-size-xsm;
+            transform: translateY(-50%) translateX(-10px);
+        }
+    }
+
+    .row__input {
+        width: 100%;
+        padding: 10px 20px;
+        border: $grey 2px solid;
+        background-color: transparent;
+        margin-bottom: 25px;
+        font-size: $font-size-sm;
+        transition: 300ms ease-in-out border-color;
+
+        &--error {
+            border-color: lighten($red, 10%);
+        }
+    }
+
+    .form__error {
+        color: $red;
+        font-family: $secondary-font;
+        font-size: $font-size-sm;
+        margin-bottom: 25px;
+    }
+}
+
+.action__container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button {
+    color: white;
+    background-color: $primary;
+    border: none;
+    padding: 10px 40px;
+    font-size: $font-size-sm;
+    font-family: $primary-font;
+    text-transform: uppercase;
+    transition: 100ms ease-in-out background-color, 100ms ease-in-out transform;
+
+    &:hover {
+        background-color: darken($primary, 10%);
+    }
+
+    &:active {
+        transform: translateY(5px);
+    }
+}
