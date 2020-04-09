@@ -4,9 +4,14 @@ import TrendingProfiles from './trending-profiles'
 import Footer from '../../../shared/footer'
 import Search from '../../../shared/search'
 import UniqueSellingpoints from '../../../shared/unique-sellingpoints'
+import Helmet from 'react-helmet'
 
 const Home = () => (
     <Fragment>
+        <Helmet>
+            <title>ShareTune - Share your favorite tunes</title>
+        </Helmet>
+
         <Gradient>
             <div className="inner">
                 <h1 className="title">Share your favourite tunes</h1>

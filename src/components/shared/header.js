@@ -1,7 +1,7 @@
 import React from 'react'
 import Logo from './logo'
 import Signout from '../forms/signout'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 const mapStateToProps = state => ({
@@ -18,7 +18,9 @@ export const UserHeader = () => (
 export const GuestHeader = connect(mapStateToProps)(({ isMobile }) => (
     <header className="header header--guest">
         <div className="inner">
-            <Logo size={isMobile && 'small'} />
+            <Link to={'/'}>
+                <Logo size={isMobile && 'small'} />
+            </Link>
             <nav className="header__nav">
                 <NavLink to={'/'} exact className="header__nav__link">Home</NavLink>
                 <NavLink to={'/login'} className="header__nav__link">Login</NavLink>

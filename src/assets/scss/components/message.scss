@@ -1,0 +1,30 @@
+.message__container {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 600px;
+    width: 100%;
+    padding: 0 25px;
+    top: 50px;
+
+    .message {
+        background: $grey;
+        padding: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: $secondary-font;
+        box-shadow: $shadow;
+    }
+
+    .close {
+        position: absolute;
+        right: 25px;
+        top: 0;
+        color: $black;
+        font-family: $secondary-font;
+        padding: 10px 15px;
+        cursor: pointer;
+        user-select: none;
+    }
+}

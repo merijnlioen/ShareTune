@@ -1,6 +1,8 @@
 const initialState = {
     user: null,
-    isMobile: false
+    isMobile: false,
+    message: null,
+    isMessageOpen: true,
 }
 
 const global = (state = initialState, action) => {
@@ -15,6 +17,18 @@ const global = (state = initialState, action) => {
                 ...state,
                 isMobile: action.value
             }
+        case 'UPDATE_MESSAGE': {
+            return {
+                ...state,
+                message: action.value
+            }
+        }
+        case 'UPDATE_IS_MESSAGE_OPENED': {
+            return {
+                ...state,
+                isMessageOpen: action.value
+            }
+        }
         default:
             return state
     }
