@@ -48,6 +48,10 @@
     opacity: .001;
     transform: translateY(-50%);
     will-change: opacity, transform;
+
+    @include breakpoint(small) {
+        transform: translateX(-50%);
+    }
 }
 
 .slide-fade-appear-active,
@@ -55,12 +59,20 @@
     opacity: 1;
     transform: translateY(0);
     transition: 500ms ease-in-out 500ms transform, opacity 400ms ease-in-out 600ms;
+
+    @include breakpoint(small) {
+        transform: translateX(0);
+    }
 }
 
 .slide-fade-appear-done,
 .slide-fade-enter-done {
     opacity: 1;
     transform: translateY(0);
+
+    @include breakpoint(small) {
+        transform: translateX(0);
+    }
 }
 
 .slide-fade-exit {
