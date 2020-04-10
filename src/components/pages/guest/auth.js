@@ -24,17 +24,27 @@ const Auth = () => {
                     <Logo size="large" isWhite />
                 </Gradient>
 
-                    {location.pathname.includes('/login') &&
-                        <div className="login__container">
+                <div className="login__container">
+                    <CSSTransition
+                        in={location.pathname.includes('/login')}
+                        classNames="slide-fade"
+                        timeout={1500}
+                        unmountOnExit
+                        appear={true}
+                    >
                             <LoginForm />
-                        </div>
-                    }
+                    </CSSTransition>
 
-                    {location.pathname.includes('/register') &&
-                        <div className="register__container">
-                            <RegisterForm />
-                        </div>
-                    }            
+                    <CSSTransition
+                        in={location.pathname.includes('/register')}
+                        classNames="slide-fade"
+                        timeout={1500}
+                        unmountOnExit
+                        appear={true}
+                    >
+                        <RegisterForm />
+                    </CSSTransition>
+                </div>
             </div>
         </CSSTransition>
     )

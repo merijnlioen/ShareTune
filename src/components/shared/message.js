@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { CSSTransition } from 'react-transition-group'
 import { updateIsMessageOpened } from '../../actions/global-actions'
+import { Close } from '../shared/icons'
 
 const Message = ({ message, updateIsMessageOpened, isMessageOpen }) => (
     <CSSTransition
@@ -13,7 +14,7 @@ const Message = ({ message, updateIsMessageOpened, isMessageOpen }) => (
     >
         <div className="message__container">
             <div className="message">{message}</div>
-            <div className="close" onClick={() => updateIsMessageOpened(false)}>X</div>
+            <div className="close" onClick={() => updateIsMessageOpened(false)}><Close /></div>
         </div>
     </CSSTransition>
 )

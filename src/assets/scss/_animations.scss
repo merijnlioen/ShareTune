@@ -1,3 +1,17 @@
+.fade-appear {
+    opacity: .001;
+    will-change: opacity;
+}
+
+.fade-appear-active {
+    opacity: 1;
+    transition: 500ms ease-in-out opacity;
+}
+
+.fade-appear-done {
+    opacity: 1;
+}
+
 .fade-enter {
     opacity: .001;
     will-change: opacity;
@@ -27,10 +41,57 @@
 }
 
 
+
+
+.slide-fade-appear,
+.slide-fade-enter {
+    opacity: .001;
+    transform: translateY(-50%);
+    will-change: opacity, transform;
+}
+
+.slide-fade-appear-active,
+.slide-fade-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: 500ms ease-in-out 500ms transform, opacity 400ms ease-in-out 600ms;
+}
+
+.slide-fade-appear-done,
+.slide-fade-enter-done {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-fade-exit {
+    opacity: 1;
+    transform: translateY(0);
+    will-change: opacity, transform;
+}
+
+.slide-fade-exit-active {
+    opacity: .001;
+    transform: translateY(50%);
+    transition: 500ms ease-in-out  transform, opacity 400ms ease-in-out 100ms;
+}
+
+.slide-fade-exit-done {
+    opacity: .001;
+    transform: translateY(50%);
+}
+
+
+
+
+
 .auth-appear {
     .gradient {
         transform: translateX(-100%);
         will-change: transform;
+
+        @include breakpoint(small) {
+            transform: none;
+        }
     }
     .logo {
         opacity: .001;
@@ -42,16 +103,28 @@
     .gradient {
         transform: translateX(0);
         transition: 750ms ease-in-out transform;
+
+        @include breakpoint(small) {
+            transform: none;
+        }
     }
     .logo {
         opacity: 1;
         transition: 500ms ease-in-out 500ms;
+
+        @include breakpoint(small) {
+            transition: 500ms ease-in-out;
+        }
     }
 }
 
 .auth-appear-done {
     .gradient {
         transform: translateX(0);
+
+        @include breakpoint(small) {
+            transform: none;
+        }
     }
     .logo {
         opacity: 1;

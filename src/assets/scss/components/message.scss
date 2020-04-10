@@ -7,6 +7,10 @@
     padding: 0 25px;
     top: 50px;
 
+    @include breakpoint(small) {
+        top: 25px;
+    }
+
     .message {
         background: $grey;
         padding: 25px;
@@ -26,5 +30,17 @@
         padding: 10px 15px;
         cursor: pointer;
         user-select: none;
+
+        > svg {
+            
+            @include breakpoint(small) {
+                width: 16px;
+                height: 16px;                
+            }
+
+            line {
+                stroke: $red;
+            }
+        }
     }
 }

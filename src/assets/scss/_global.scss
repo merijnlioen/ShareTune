@@ -29,6 +29,10 @@ body {
 
 .content__container {
     padding: 100px 0;
+
+    @include breakpoint(small) {
+        padding: 50px 0;
+    }
 }
 
 .trending__container {
@@ -74,6 +78,15 @@ body {
     flex-direction: row;
     flex: 1;
 
+    @include breakpoint(small) {
+        flex-direction: column;
+
+        .gradient {
+            height: 200px;
+            flex: none;
+        }
+    }
+
     > div {
         flex: 1;
         display: flex;
@@ -81,6 +94,12 @@ body {
         align-items: center;
         height: auto;
         position: relative;
+
+        @include breakpoint(small) {
+            &:not(.gradient) {
+                align-items: flex-start;
+            }
+        }
 
         &.gradient {
             z-index: -1;
@@ -91,7 +110,7 @@ body {
 form {
     width: 100%;
     max-width: 500px;
-    padding: 0 25px;
+    padding: 25px;
 
     .heading {
         margin-bottom: 10px;
@@ -172,5 +191,11 @@ form {
 
     &:active {
         transform: translateY(5px);
+    }
+}
+
+.login__container {
+    form {
+        position: absolute;
     }
 }
