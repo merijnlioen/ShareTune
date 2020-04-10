@@ -1,8 +1,10 @@
 import React, { Fragment } from 'react'
 import { Switch, Route } from 'react-router-dom'
-import Home from './components/pages/user/home'
-import NotFound from './components/pages/not-found'
 import { UserHeader } from './components/shared/header'
+
+import Home from './components/pages/user/home'
+import Settings from './components/pages/user/settings'
+import NotFound from './components/pages/not-found'
 
 const UserRouter = () => (
     <Fragment>
@@ -12,6 +14,7 @@ const UserRouter = () => (
             <div className="inner">
                 <Switch>
                     <Route path="/" exact component={Home} />
+                    <Route path="/settings" exact component={Settings} />
                     <Route component={NotFound} />
                 </Switch>
             </div>

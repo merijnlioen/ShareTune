@@ -22,9 +22,17 @@ body {
     }
 }
 
+.hidden {
+    display: none;
+}
+
 .user__container {
     padding: 50px 0;
     padding-left: $header-width;
+
+    form {
+        margin-top: 50px;
+    }
 }
 
 .content__container {
@@ -109,8 +117,6 @@ body {
 
 form {
     width: 100%;
-    max-width: 500px;
-    padding: 25px;
 
     .heading {
         margin-bottom: 10px;
@@ -145,6 +151,16 @@ form {
             right: 0;
             font-size: $font-size-xsm;
             transform: translateY(-50%) translateX(-10px);
+        }
+
+        &--image {
+            margin-bottom: 50px;
+
+            .row__error {
+                left: 0;
+                right: auto;
+                transform: translateY(-50%) translateX(10px);
+            }
         }
     }
 
@@ -197,5 +213,14 @@ form {
 .login__container {
     form {
         position: absolute;
+        max-width: 500px;
+        padding: 25px;
     }
+}
+
+.avatar {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    display: block;
 }

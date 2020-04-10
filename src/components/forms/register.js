@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { composeValidators, required, minLength, email, passwordConfirmation } from '../../helpers/validate'
+import { composeValidators, required, minLength, maxLength, alphaNumeric, email, passwordConfirmation } from '../../helpers/validate'
 import { Form, Field } from 'react-final-form'
 import { FORM_ERROR } from 'final-form'
 import { withFirebase } from '../../firebase'
@@ -32,6 +32,14 @@ const RegisterForm = ({ firebase }) => {
                         type="email"
                         label="email"
                         validate={composeValidators(required, minLength(3), email)}
+                    />
+
+                    <Field 
+                        name="username"
+                        component={RenderField}
+                        type="text"
+                        label="Username"
+                        validate={composeValidators(required, minLength(3), maxLength(16), alphaNumeric)}
                     />
 
                     <Field 

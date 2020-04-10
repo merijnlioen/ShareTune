@@ -1,6 +1,8 @@
 import React from 'react'
 import app from 'firebase/app'
 import 'firebase/auth'
+import 'firebase/functions'
+import 'firebase/storage'
 
 export const config = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -18,6 +20,8 @@ class Firebase {
         app.initializeApp(config)
 
         this.auth = app.auth()
+        this.functions = app.functions()
+        this.storage = app.storage()
     }
 
     doCreateUserWithEmailAndPassword = (email, password) =>

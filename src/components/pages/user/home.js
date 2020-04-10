@@ -1,11 +1,24 @@
 import React, { Fragment } from 'react'
 import Signout from '../../forms/signout'
+import { withFirebase } from '../../../firebase'
 
-const Home = () => (
-    <Fragment>
-        <h1>User home</h1>
-        <Signout />
-    </Fragment>
-)
+const Home = ({ firebase }) => {
+    const sendMessage = () => {
+        console.log('test')
+        // const addMessage = firebase.functions.httpsCallable('addMessage')
 
-export default Home
+        // addMessage({ text: 'Test' })
+        //     .then(result => console.log(result))
+        //     .catch(error => console.error(error))
+    }
+
+    return (
+        <div className="inner">
+            <h1>User home</h1>
+            <Signout />
+            <button onClick={() => sendMessage()}>Send</button>
+        </div>
+    )
+}
+
+export default withFirebase(Home)

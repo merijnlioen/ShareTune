@@ -5,7 +5,12 @@ import { NavLink, Link } from 'react-router-dom'
 
 export const UserHeader = () => (
     <header className="header header--user">
-        <Logo />
+        <Link to={'/'}>
+            <Logo />
+        </Link>
+
+        <NavLink to={'/settings'} className="header__nav__link">Settings</NavLink>
+        
         <Signout />
     </header>
 )

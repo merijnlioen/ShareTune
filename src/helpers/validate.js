@@ -30,9 +30,9 @@ export const passwordConfirmation = (value, allValues) =>
     ? 'Passwords don\'t match' 
     : undefined
     
-export const maxFileSize = value =>
-  value && value.size > 10000000
-    ? 'Max file size is 10MB'
+export const maxFileSize = max => value =>
+  value && value.size > max
+    ? `Max file size is ${(max / 1000000).toFixed(1)}MB`
     : undefined
 
 const acceptedAudioFiles = [

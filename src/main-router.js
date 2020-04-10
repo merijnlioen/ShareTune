@@ -20,7 +20,6 @@ const MainRouter = ({ user, isMobile, updateIsMobile, observeAuthChange }) => {
     useEffect(() => {
         observeAuthChange()
         onResize()
-        console.log(user)
     }, [])
 
     const onResize = () => {
