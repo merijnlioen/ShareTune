@@ -39,6 +39,14 @@ $secondary-font: 'NotoSans', 'sans-serif';
     font-size: $font-size-xlg;
     color: $white;
     font-family: $primary-font;
+
+    &--dark {
+        color: $black;
+    }
+
+    &--center {
+        text-align: center;
+    }
 }
 
 .subtitle {
@@ -55,6 +63,12 @@ $secondary-font: 'NotoSans', 'sans-serif';
     &--primary {
         color: $primary;
     }
+}
+
+.subheading {
+    font-family: $secondary-font;
+    font-size: $font-size-md;
+    font-weight: 700;
 }
 
 .text {

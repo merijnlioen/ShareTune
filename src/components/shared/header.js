@@ -10,17 +10,24 @@ const mapDispatchToProps = dispatch => ({
     signOut: (firebase, history) => dispatch(signOut(firebase, history))
 })
 
-export const UserHeader = connect(null, mapDispatchToProps)(withFirebase(({ firebase, signOut }) => {
+const mapStateToProps = state => ({
+    user: state.global.user
+})
+
+export const UserHeader = connect(mapStateToProps, mapDispatchToProps)(withFirebase(({ firebase, signOut, user }) => {
     const history = useHistory()
-    // console.log(props)
 
     return (
         <header className="header header--user">
-            <Link to={'/'}>
-                <Logo />
-            </Link>
+            <div className="header__content">
+                <Link to={'/'}>
+                    <Logo />
+                </Link>
 
-            <div className="header__nav">
+                <Link to={`/profile/${user.uid}`}>
+                    <img src={user.avatar} className="avatar avatar--small avatar--round" />
+                </Link>
+
                 <NavLink to={'/'} exact className="header__nav__link">Home</NavLink>
                 <NavLink to={'/settings'} className="header__nav__link">Settings</NavLink>
             </div>

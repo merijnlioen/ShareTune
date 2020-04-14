@@ -8,7 +8,6 @@ import Message from './components/shared/message'
 
 import GuestRouter from './guest-router'
 import UserRouter from './user-router'
-import ProfilePage from './components/pages/profile'
 
 const MainRouter = ({ user, isMobile, updateIsMobile, observeAuthChange }) => {    
     useEffect(() => {
@@ -36,7 +35,6 @@ const MainRouter = ({ user, isMobile, updateIsMobile, observeAuthChange }) => {
                 <div className="page">
                     <Message />
                     <Switch>
-                        <Route path="/profile/:id" component={ProfilePage} />
                         {user && Object.keys(user).length <= 0 && <Route path="/" component={GuestRouter} />}
                         {user && Object.keys(user).length > 0 && <Route path="/" component={UserRouter} />}
                     </Switch>

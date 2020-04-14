@@ -223,6 +223,16 @@ form {
     height: 200px;
     object-fit: cover;
     display: block;
+
+    &--small {
+        width: 120px;
+        height: 120px;
+    }
+
+    &--round {
+        border-radius: 100%;
+        border: 2px solid $white;
+    }
 }
 
 .banner {
@@ -230,4 +240,23 @@ form {
     height: 200px;
     object-fit: cover;
     display: block;
+}
+
+.not-found {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.profile {
+    .avatar {
+        transform: translateY(-50%) translateX(-50%);
+        position: relative;
+        left: 50%;
+    }
+}
+
+.text-center {
+    text-align: center;
 }

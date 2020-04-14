@@ -1,8 +1,10 @@
 import React from 'react'
 
 const NotFound = () => (
-    <div>
-        <h1>Not Found</h1>
+    <div className="not-found">
+        <div className="inner">
+            <h1 className="title title--dark title--center">Not Found</h1>
+        </div>
     </div>
 )
 
