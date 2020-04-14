@@ -1,41 +1,74 @@
-import React from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import Logo from './logo'
 import { NavLink, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { withFirebase } from '../../firebase'
 import { useHistory } from 'react-router-dom'
 import { signOut } from '../../actions/global-actions'
+import { CSSTransition } from 'react-transition-group'
+import { Close, Open } from './icons'
 
 const mapDispatchToProps = dispatch => ({
     signOut: (firebase, history) => dispatch(signOut(firebase, history))
 })
 
 const mapStateToProps = state => ({
-    user: state.global.user
+    user: state.global.user,
+    isMobile: state.global.isMobile
 })
 
-export const UserHeader = connect(mapStateToProps, mapDispatchToProps)(withFirebase(({ firebase, signOut, user }) => {
+export const UserHeader = connect(mapStateToProps, mapDispatchToProps)(withFirebase(({ firebase, signOut, user, isMobile }) => {
+    const [isHeaderOpen, setHeaderOpen] = useState()
     const history = useHistory()
 
+    useEffect(() => {
+        setTimeout(() => {
+            setHeaderOpen(true)
+        }, 100000000)
+    }, [])
+
     return (
-        <header className="header header--user">
-            <div className="header__content">
-                <Link to={'/'}>
-                    <Logo />
-                </Link>
+        <Fragment>
+            {isMobile && 
+                <div className="hamburger__container">
+                    <div className="inner">
+                        <Link to={'/'}>
+                            <Logo size="small" />
+                        </Link>
+                        
+                        {isHeaderOpen && <Close onClick={() => setHeaderOpen(false)} />}
+                        {!isHeaderOpen && <Open onClick={() => setHeaderOpen(true)} />}                        
+                    </div>
+                </div>
+            }
+            <CSSTransition
+                in={!isMobile || isMobile && isHeaderOpen}
+                timeout={1000}
+                classNames={isMobile ? 'fade' : 'no-anim'}
+                unmountOnExit
+            >
+                <header className="header header--user" onClick={() => setHeaderOpen(false)}>
+                    <div className="header__content">
+                        {!isMobile &&
+                            <Link to={'/'}>
+                                <Logo />
+                            </Link>
+                        }
 
-                <Link to={`/profile/${user.uid}`}>
-                    <img src={user.avatar} className="avatar avatar--small avatar--round" />
-                </Link>
+                        <Link to={`/profile/${user.uid}`}>
+                            <img src={user.avatar} className="avatar avatar--small avatar--round" />
+                        </Link>
 
-                <NavLink to={'/'} exact className="header__nav__link">Home</NavLink>
-                <NavLink to={'/settings'} className="header__nav__link">Settings</NavLink>
-            </div>
-            
-            <p className="header__nav__link" 
-                onClick={() => signOut(firebase, history)}
-            >Logout</p>
-        </header>
+                        <NavLink to={'/'} exact className="header__nav__link">Home</NavLink>
+                        <NavLink to={'/settings'} className="header__nav__link">Settings</NavLink>
+                    </div>
+                    
+                    <p className="header__nav__link" 
+                        onClick={() => signOut(firebase, history)}
+                    >Logout</p>
+                </header>
+            </CSSTransition>
+        </Fragment>
     )
 }))
 

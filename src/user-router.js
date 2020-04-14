@@ -11,13 +11,11 @@ const UserRouter = () => (
         <div className="user__container">
             <UserHeader />
             
-            <div className="inner">
-                <Switch>
-                    <Route path="/" exact component={Home} />
-                    <Route path="/settings" exact component={Settings} />
-                    <SharedRoutes />
-                </Switch>
-            </div>
+            <Switch>
+                <Route path="/" exact component={Home} />
+                <Route path="/settings" exact component={Settings} />
+                <SharedRoutes />
+            </Switch>
         </div>
     </Fragment>
 )

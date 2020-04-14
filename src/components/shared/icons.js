@@ -48,11 +48,18 @@ export const LinkedIn = () => (
     </svg>
 )
 
-export const Close = () => (
-    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 27.38 27.38" xmlSpace="preserve">
+export const Close = ({ ...props }) => (
+    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 27.38 27.38" xmlSpace="preserve" {...props}>
         <g>
             <line stroke="#000" x1="4.81" y1="4.72" x2="22.36" y2="22.54"/>
             <line stroke="#000" x1="22.36" y1="4.72" x2="4.81" y2="22.54"/>
         </g>
+    </svg>
+)
+
+export const Open = ({ ...props }) => (
+    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 27.38 27.38" xmlSpace="preserve" {...props}>
+        <line stroke="#000" x1="4.58" y1="9.34" x2="22.43" y2="9.34"/>
+        <line stroke="#000" x1="4.58" y1="18.34" x2="22.43" y2="18.34"/>
     </svg>
 )

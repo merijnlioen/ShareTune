@@ -29,6 +29,10 @@
         left: 0;
         top: 0;
 
+        @include breakpoint(small) {
+            width: 100vw;
+        }
+
         .header__content {
             display: flex;
             align-items: center;
@@ -72,5 +76,20 @@
                 }
             }
         }
+    }
+}
+
+.hamburger__container {
+    width: 100%;
+    padding-bottom: 20px;
+    user-select: none;
+
+    .inner {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        z-index: 20;
     }
 }

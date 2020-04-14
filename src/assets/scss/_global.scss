@@ -18,7 +18,7 @@ body {
     flex-direction: column;
 
     @include breakpoint(small) {
-        font-size: em-calc(10px);
+        font-size: em-calc(12px);
     }
 }
 
@@ -29,6 +29,10 @@ body {
 .user__container {
     padding: 50px 0;
     padding-left: $header-width;
+
+    @include breakpoint(small) {
+        padding: 20px 0;
+    }
 
     form {
         margin-top: 50px;
