@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import classNames from 'classnames'
 
 const adaptFileEventToValue = (delegate, setSelectedPhoto) => e => {
   delegate(e.target.files[0])
@@ -13,7 +14,7 @@ const adaptFileEventToValue = (delegate, setSelectedPhoto) => e => {
   }
 }
 
-const FileInput = ({
+const ImageField = ({
   input: {
     value: omitValue,
     onChange,
@@ -23,16 +24,17 @@ const FileInput = ({
   label,
   meta: { touched, error, warning },
   dataAllowedFileExtensions,
-  firebase,
+  fullWidth,
+  photo,
   ...props
 }) => {
   const [selectedPhoto, setSelectedPhoto] = useState()
 
   return (
     <div className="form__row form__row--image">
-      <label htmlFor={label} className="row__label" >Profile picture</label>
+      <label htmlFor={label} className="row__label" >{label}</label>
       <label htmlFor={label} >
-        <img className="avatar" src={selectedPhoto || firebase.auth.currentUser.photoURL} />
+        <img className={classNames({ 'banner': fullWidth }, { 'avatar': !fullWidth })} src={selectedPhoto || photo} />
       </label>
       <input
         className="hidden"
@@ -53,4 +55,4 @@ const FileInput = ({
 }
   
 
-export default FileInput
+export default ImageField

@@ -24,8 +24,14 @@ export const updateIsMessageOpened = value => ({
 export const observeAuthChange = firebase => dispatch => {
     firebase.auth.onAuthStateChanged(authUser => {
         if (authUser) {
-            console.log(authUser)
-            if (authUser.emailVerified) return dispatch(updateUser(authUser))
+            if (authUser.emailVerified) {
+                return firebase.db.collection('users').doc(authUser.uid).onSnapshot(doc => {
+                    return dispatch(updateUser(doc.data()))
+                }, error => {
+                    console.error(error)
+                })
+            }
+
             dispatch(showMessage('Please verify your e-mail'))
         }
         dispatch(updateUser({}))

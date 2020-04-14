@@ -11,9 +11,12 @@ const RegisterForm = ({ firebase }) => {
 
     const register = values => 
         firebase.doCreateUserWithEmailAndPassword(values.email, values.password)
-            .then(() => {
-                history.push('/')
+            .then(authUser => {
+                return firebase.db.collection('users').doc(authUser.user.uid).set({
+                    username: values.username
+                })
             })
+            .then(() => history.push('/'))
             .catch(error => {
                 return { [FORM_ERROR]: error.message }
             })
@@ -51,7 +54,7 @@ const RegisterForm = ({ firebase }) => {
                     />
 
                     <Field 
-                        name="password-confirmation"
+                        name="passwordConfirmation"
                         component={RenderField}
                         type="password"
                         label="password confirmation"
