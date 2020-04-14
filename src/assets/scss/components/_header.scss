@@ -1,6 +1,20 @@
 .header {
     background-color: $white;
 
+    .header__nav__link {
+        color: $black;
+        text-decoration: none;
+        font-family: $secondary-font;
+        transition: 300ms ease-in-out color;
+        will-change: color;
+        font-size: $font-size-md;
+        cursor: pointer;
+
+        &.active {
+            color: $primary;
+        }
+    }
+
     &--user {
         background: $grey;
         padding: 50px 20px;
@@ -13,6 +27,21 @@
         position: fixed;
         left: 0;
         top: 0;
+
+        .header__nav {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header__nav__link {
+            &:not(:last-child) {
+                margin-bottom: 20px;
+
+                @include breakpoint(small) {
+                    margin-bottom: 10px;
+                }
+            }
+        }
     }
 
     &--guest {
@@ -27,26 +56,15 @@
                 height: 50px;
             }
         }
-    }
 
-    .header__nav__link {
-        color: $black;
-        text-decoration: none;
-        font-family: $secondary-font;
-        transition: 300ms ease-in-out color;
-        will-change: color;
-        font-size: $font-size-md;
+        .header__nav__link {
+            &:not(:last-child) {
+                margin-right: 40px;
 
-        &:not(:last-child) {
-            margin-right: 40px;
-
-            @include breakpoint(small) {
-                margin-right: 25px;
+                @include breakpoint(small) {
+                    margin-right: 25px;
+                }
             }
-        }
-
-        &.active {
-            color: $primary;
         }
     }
 }

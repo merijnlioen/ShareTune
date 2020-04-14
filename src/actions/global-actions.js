@@ -42,3 +42,14 @@ export const showMessage = message => dispatch => {
     dispatch(updateMessage(message))
     dispatch(updateIsMessageOpened(true))
 }
+
+export const signOut = (firebase, history) => dispatch => {
+    firebase.doSignOut()
+        .then(() => {
+            history.push('/')
+            dispatch(showMessage('We hope to see you again soon!'))
+        })
+        .catch(error => {
+            console.error(error)
+        })
+}
