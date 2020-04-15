@@ -2,6 +2,17 @@ body {
     background-color: $white;
 }
 
+html,
+body {
+    height: 100%;
+}
+
+
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 .inner {
     $width: 1280px;
     $padding: 20px;

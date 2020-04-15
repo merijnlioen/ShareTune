@@ -55,6 +55,17 @@ export const UserHeader = connect(mapStateToProps, mapDispatchToProps)(withFireb
                             </Link>
                         }
 
+                        {isMobile &&
+                            <div className="header__content--mobile">
+                                <Link to={'/'}>
+                                    <Logo size="small" />
+                                </Link>
+                                
+                                {isHeaderOpen && <Close onClick={() => setHeaderOpen(false)} />}
+                                {!isHeaderOpen && <Open onClick={() => setHeaderOpen(true)} />} 
+                            </div>
+                        }
+
                         <Link to={`/profile/${user.uid}`}>
                             <img src={user.avatar} className="avatar avatar--small avatar--round" />
                         </Link>

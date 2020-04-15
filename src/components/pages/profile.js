@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { withFirebase } from '../../firebase'
+import Helmet from 'react-helmet'
 
 const ProfilePage = ({ firebase }) => {
     const [profile, setProfile] = useState(true)
@@ -15,6 +16,10 @@ const ProfilePage = ({ firebase }) => {
 
     return (
         <div className="profile">
+            <Helmet>
+                <title>{`Sharetune - Profile of ${profile?.username}`}</title>
+            </Helmet>
+
             <div className="inner">
                 <img className="banner" src={profile?.banner} />
                 <img className="avatar avatar--small avatar--round" src={profile?.avatar} />
