@@ -76,4 +76,10 @@ $secondary-font: 'NotoSans', 'sans-serif';
     color: $black;
     font-size: $font-size-sm;
     line-height: calc(#{$font-size-sm} * 1.5);
+    text-transform: capitalize;
+
+    &--disabled {
+        color: $dark-grey !important;
+        user-select: none;
+    }
 }
