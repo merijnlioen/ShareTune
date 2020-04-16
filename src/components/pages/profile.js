@@ -14,8 +14,8 @@ const ProfilePage = ({ firebase }) => {
     const { id } = useParams()
 
     const history = useHistory()
-    const isUsersProfile = firebase.auth.currentUser.uid === id
-    const userId = firebase.auth.currentUser.uid
+    const isUsersProfile = firebase.auth.currentUser?.uid === id
+    const userId = firebase.auth.currentUser?.uid
 
     useEffect(() => {
         setProfile(null)
@@ -28,7 +28,7 @@ const ProfilePage = ({ firebase }) => {
 
         setProfileLoaded(true)
         
-        if (id === userId) return
+        if (!userId || id === userId) return
 
         const friendId = getFriendId()
 
@@ -98,42 +98,44 @@ const ProfilePage = ({ firebase }) => {
                         <img className="banner" src={profile?.banner || DefaultBanner} />
                         <img className="avatar avatar--small avatar--round" src={profile?.avatar || DefaultAvatar} />
 
-                        <div className="action__container">
-                            {!isUsersProfile &&
-                                <Fragment>
-                                    {!friendStatus && <p className="text" onClick={() => addFriend()}>Add friend</p>}
+                        {userId &&
+                            <div className="action__container">
+                                {!isUsersProfile && 
+                                    <Fragment>
+                                        {!friendStatus && <p className="text" onClick={() => addFriend()}>Add friend</p>}
 
-                                    {friendStatus &&
-                                        <Fragment>
-                                            {friendStatus.status === 'pending' &&
-                                                <Fragment>
-                                                    {friendStatus.sender === userId &&
-                                                        <p className="text text--disabled">Friend request pending</p>
-                                                    }
+                                        {friendStatus &&
+                                            <Fragment>
+                                                {friendStatus.status === 'pending' &&
+                                                    <Fragment>
+                                                        {friendStatus.sender === userId &&
+                                                            <p className="text text--disabled">Friend request pending</p>
+                                                        }
 
-                                                    {friendStatus.sender !== userId &&
-                                                        <Fragment>
-                                                            <p onClick={() => acceptFriend()} className="text">Accept</p>
-                                                            <p onClick={() => removeFriend()} className="text">Decline</p>
-                                                        </Fragment>
-                                                    }
-                                                </Fragment>
-                                            }
+                                                        {friendStatus.sender !== userId &&
+                                                            <Fragment>
+                                                                <p onClick={() => acceptFriend()} className="text">Accept</p>
+                                                                <p onClick={() => removeFriend()} className="text">Decline</p>
+                                                            </Fragment>
+                                                        }
+                                                    </Fragment>
+                                                }
 
-                                            {friendStatus.status === 'friends' &&
-                                                <Fragment>
-                                                    <p onClick={() => removeFriend()} className="text">Remove friend</p>
-                                                    <p className="text">Message</p>
-                                                </Fragment>
-                                            }
-                                        </Fragment>
-                                    }
-                                </Fragment>
-                            }
-                            {isUsersProfile &&
-                                <p className="text" onClick={() => history.push('/settings')}>Edit profile</p>
-                            }
-                        </div>
+                                                {friendStatus.status === 'friends' &&
+                                                    <Fragment>
+                                                        <p onClick={() => removeFriend()} className="text">Remove friend</p>
+                                                        <p className="text">Message</p>
+                                                    </Fragment>
+                                                }
+                                            </Fragment>
+                                        }
+                                    </Fragment>
+                                }
+                                {isUsersProfile &&
+                                    <p className="text" onClick={() => history.push('/settings')}>Edit profile</p>
+                                }
+                            </div>
+                        }
 
                         <div className="text-center">
                             <h1 className="heading">{profile?.username}</h1>

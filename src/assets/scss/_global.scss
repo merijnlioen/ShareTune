@@ -293,6 +293,10 @@ form {
     }
 
     .action__container {
+        & + .text-center {
+            padding-top: 50px;
+        }
+
         @include breakpoint(small) {
             padding-top: 60px;
             justify-content: center;
@@ -300,7 +304,7 @@ form {
     }
 
     .text-center {
-        padding-top: 50px;
+        padding-top: 100px;
 
         @include breakpoint(small) {
             padding-top: 25px;
