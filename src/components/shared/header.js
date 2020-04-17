@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom'
 import { signOut } from '../../actions/global-actions'
 import { CSSTransition } from 'react-transition-group'
 import { Close, Open } from './icons'
+import Avatar from './avatar'
 
 const mapDispatchToProps = dispatch => ({
     signOut: (firebase, history) => dispatch(signOut(firebase, history))
@@ -67,7 +68,12 @@ export const UserHeader = connect(mapStateToProps, mapDispatchToProps)(withFireb
                         }
 
                         <Link to={`/profile/${user.uid}`}>
-                            <img src={user.avatar} className="avatar avatar--small avatar--round" />
+                            <Avatar
+                                avatar={user?.avatar}
+                                username={user?.username}
+                                isRound
+                                isSmall
+                            />
                         </Link>
 
                         <NavLink to={'/'} exact className="header__nav__link">Home</NavLink>

@@ -4,8 +4,8 @@ import { withFirebase } from '../../firebase'
 import { useHistory } from 'react-router-dom'
 import Helmet from 'react-helmet'
 import DefaultBanner from '../../assets/img/banner.jpg'
-import DefaultAvatar from '../../assets/img/avatar.jpg'
 import NotFound from './not-found'
+import Avatar from '../shared/avatar'
 
 const ProfilePage = ({ firebase }) => {
     const [profile, setProfile] = useState()
@@ -96,7 +96,12 @@ const ProfilePage = ({ firebase }) => {
 
                     <div className="inner">
                         <img className="banner" src={profile?.banner || DefaultBanner} />
-                        <img className="avatar avatar--small avatar--round" src={profile?.avatar || DefaultAvatar} />
+                        <Avatar 
+                            isRound
+                            isSmall
+                            avatar={profile?.avatar}
+                            userName={profile?.username}
+                        />
 
                         {userId &&
                             <div className="action__container">
