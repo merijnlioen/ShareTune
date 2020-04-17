@@ -72,7 +72,6 @@ export const UserHeader = connect(mapStateToProps, mapDispatchToProps)(withFireb
                                 avatar={user?.avatar}
                                 username={user?.username}
                                 isRound
-                                isSmall
                             />
                         </Link>
 

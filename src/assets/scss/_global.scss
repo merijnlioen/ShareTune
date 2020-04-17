@@ -255,15 +255,10 @@ form {
 }
 
 .avatar {
-    width: 200px;
-    height: 200px;
+    width: 120px;
+    height: 120px;
     object-fit: cover;
     display: block;
-
-    &--small {
-        width: 120px;
-        height: 120px;
-    }
 
     &--round {
         border-radius: 100%;

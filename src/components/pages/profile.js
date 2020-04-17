@@ -100,7 +100,6 @@ const ProfilePage = ({ firebase }) => {
                         <img className="banner" src={profile?.banner || DefaultBanner} />
                         <Avatar 
                             isRound
-                            isSmall
                             avatar={profile?.avatar}
                             userName={profile?.username}
                         />
