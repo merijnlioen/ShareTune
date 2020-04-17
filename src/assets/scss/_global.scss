@@ -30,6 +30,10 @@ body {
 
     &--user {
         padding: 50px 0;
+
+        @include breakpoint(small) {
+            padding: 0;
+        }
     }
 
     @include breakpoint(small) {
@@ -292,22 +296,22 @@ form {
         left: calc(50%);
     }
 
+    .text-center {
+        padding-top: 100px;
+
+        // @include breakpoint(small) {
+        //     padding-top: 25px;
+        // }
+    }
+
     .action__container {
         & + .text-center {
-            padding-top: 50px;
+            padding-top: 0px;
         }
 
         @include breakpoint(small) {
             padding-top: 60px;
             justify-content: center;
-        }
-    }
-
-    .text-center {
-        padding-top: 100px;
-
-        @include breakpoint(small) {
-            padding-top: 25px;
         }
     }
 }
