@@ -297,17 +297,21 @@ form {
     }
 
     .text-center {
-        padding-top: 100px;
+        padding-top: 20px;
+
+        @include breakpoint(small) {
+            padding-top: 100px;
+        }
     }
 
     .action__container {
-        & + .text-center {
-            padding-top: 0px;
-        }
-
         @include breakpoint(small) {
             padding-top: 60px;
             justify-content: center;
+
+            & + .text-center {
+                padding-top: 0px;
+            }
         }
     }
 }
