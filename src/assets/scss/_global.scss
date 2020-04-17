@@ -319,3 +319,38 @@ form {
 .text-center {
     text-align: center;
 }
+
+.trending__profile__container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow: scroll;
+    margin-top: 10px;
+
+    .trending__profile {
+        flex-shrink: 0;
+        position: relative;
+
+        &__username {
+            position: absolute;
+            bottom: 0;
+            color: white;
+            font-family: $primary-font;
+            font-size: $font-size-sm;
+            padding: 10px;
+        }
+
+        &__overlay {
+            height: 50px;
+            width: 100%;
+            left: 0;
+            bottom: 0;
+            position: absolute;
+            background: linear-gradient(to top, rgba($black, .8), transparent);
+        }
+
+        &:not(:last-child) {
+            margin-right: 20px;
+        }
+    }
+}

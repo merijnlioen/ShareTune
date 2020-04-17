@@ -25,8 +25,10 @@ const ProfilePage = ({ firebase }) => {
             .then(user => {
                 setProfile(user.data())
             })
+            .then(() => {
+                setProfileLoaded(true)
+            })
 
-        setProfileLoaded(true)
         
         if (!userId || id === userId) return
 

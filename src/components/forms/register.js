@@ -13,7 +13,8 @@ const RegisterForm = ({ firebase }) => {
         firebase.doCreateUserWithEmailAndPassword(values.email, values.password)
             .then(authUser => {
                 return firebase.db.collection('users').doc(authUser.user.uid).set({
-                    username: values.username
+                    username: values.username,
+                    id: authUser.user.uid
                 })
             })
             .then(() => history.push('/'))

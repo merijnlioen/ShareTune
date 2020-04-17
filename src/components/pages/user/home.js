@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { withFirebase } from '../../../firebase'
+import { Link } from 'react-router-dom'
 import Avatar from '../../shared/avatar'
 
 const Home = ({ firebase }) => {
@@ -16,15 +17,21 @@ const Home = ({ firebase }) => {
         <div className="inner">
             <h1 className="heading">Home</h1>
             <h2 className="subheading">Trending profiles</h2>
-            {trendingProfiles?.map((profile, index) => (
-                <div className="trending__profile">
-                    <p>{profile.username}</p>
-                    <Avatar
-                        avatar={profile.avatar}
-                        username={profile.username}
-                    />
-                </div>
-            ))}
+
+            <div className="trending__profile__container">
+                {trendingProfiles?.map((profile, index) => (
+                    <Link to={`/profile/${profile.id}`} key={index} className="trending__profile">
+                        {console.log(profile)}
+                        <div className="trending__profile__overlay" />
+                        <p className="trending__profile__username">{profile.username}</p>
+
+                        <Avatar
+                            avatar={profile.avatar}
+                            username={profile.username}
+                        />
+                    </Link>
+                ))}
+            </div>
         </div>
     )
 }
