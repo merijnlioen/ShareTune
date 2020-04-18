@@ -67,7 +67,7 @@ export const UserHeader = connect(mapStateToProps, mapDispatchToProps)(withFireb
                             </div>
                         }
 
-                        <Link to={`/profile/${user.uid}`}>
+                        <Link to={`/profile/${user.id}`}>
                             <Avatar
                                 avatar={user?.avatar}
                                 username={user?.username}

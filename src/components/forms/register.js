@@ -9,11 +9,20 @@ import RenderField from './render-field'
 const RegisterForm = ({ firebase }) => {
     const history = useHistory()
 
-    const register = values => 
+    const register = async values => {
+        const doesUsernameExist = await firebase.db.collection('usernames').doc(values.username.toLowerCase()).get()
+            .then(username => !!username.data())
+            
+        if (doesUsernameExist) return { [FORM_ERROR]: 'Username already in use' } 
+
         firebase.doCreateUserWithEmailAndPassword(values.email, values.password)
-            .then(authUser => {
-                return firebase.db.collection('users').doc(authUser.user.uid).set({
+            .then(authUser =>  {
+                firebase.db.collection('users').doc(authUser.user.uid).set({
                     username: values.username,
+                    id: authUser.user.uid
+                })
+
+                firebase.db.collection('usernames').doc(values.username.toLowerCase()).set({
                     id: authUser.user.uid
                 })
             })
@@ -21,6 +30,7 @@ const RegisterForm = ({ firebase }) => {
             .catch(error => {
                 return { [FORM_ERROR]: error.message }
             })
+    }
 
     return (
         <Form

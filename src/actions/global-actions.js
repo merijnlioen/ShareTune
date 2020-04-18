@@ -26,10 +26,7 @@ export const observeAuthChange = firebase => dispatch => {
         if (authUser) {
             if (authUser.emailVerified) {
                 return firebase.db.collection('users').doc(authUser.uid).onSnapshot(doc => {
-                    return dispatch(updateUser({
-                        ...doc.data(),
-                        uid: authUser.uid
-                    }))
+                    return dispatch(updateUser(doc.data()))
                 }, error => {
                     console.error(error)
                 })

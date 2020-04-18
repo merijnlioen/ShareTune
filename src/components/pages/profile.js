@@ -48,6 +48,7 @@ const ProfilePage = ({ firebase }) => {
         const friendShip = {
             status: 'pending',
             sender: userId,
+            receiver: id,
             timeStamp: Date.now()
         }
 

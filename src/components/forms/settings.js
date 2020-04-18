@@ -27,9 +27,8 @@ const SettingsForm = ({ user, firebase, showMessage }) => {
         }
         if (bannerUrl) profile.banner = bannerUrl
         if (values.bio) profile.bio = values.bio
-        if (values.username) profile.username = values.username
 
-        if(values.username || values.bio || avatarUrl || bannerUrl) {
+        if(values.bio || avatarUrl || bannerUrl) {
             firebase.db.collection('users').doc(authUser.uid).update(profile)
         }
 
@@ -84,6 +83,7 @@ const SettingsForm = ({ user, firebase, showMessage }) => {
                         name="username"
                         component={RenderField}
                         label="username"
+                        disabled
                         firebase={firebase}
                         validate={composeValidators(minLength(3), maxLength(16), alphaNumeric)}
                     />

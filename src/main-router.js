@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { BrowserRouter as Router, Switch, Route, useHistory } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { observeAuthChange, updateIsMobile } from './actions/global-actions'
 import { connect } from 'react-redux'
 import variables from './assets/scss/app.scss'
@@ -9,7 +9,7 @@ import Message from './components/shared/message'
 import GuestRouter from './guest-router'
 import UserRouter from './user-router'
 
-const MainRouter = ({ user, isMobile, updateIsMobile, observeAuthChange }) => {    
+const MainRouter = ({ user, isMobile, updateIsMobile, observeAuthChange }) => {
     useEffect(() => {
         window.addEventListener('resize', onResize)
 
