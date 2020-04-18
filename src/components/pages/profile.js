@@ -49,7 +49,7 @@ const ProfilePage = ({ firebase }) => {
             status: 'pending',
             sender: userId,
             receiver: id,
-            timeStamp: Date.now()
+            timestamp: Date.now()
         }
 
         firebase.db.collection('friends').doc(friendId).set(friendShip)

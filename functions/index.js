@@ -2,39 +2,58 @@ const functions = require('firebase-functions')
 const admin = require('firebase-admin')
 
 admin.initializeApp()
+const db = admin.firestore()
 
-exports.makeUppercase = functions.database.ref('/messages/{pushId}/original')
-    .onCreate((snapshot, context) => {
-      const original = snapshot.val();
+// exports.sendNotification = functions.firestore.document('friends/{friendId}')
+//     .onCreate((snap, context) => {
+//         const value = snap.data()
 
-      console.log('Uppercasing', context.params.pushId, original);
-      const uppercase = original.toUpperCase();
+//         db.collection('users').doc(value.sender).get()
+//             .then(user => {
+//                 const sender = user.data()
 
-      return snapshot.ref.parent.child('uppercase').set(uppercase);
+//                 return db.collection('notifications').doc().set({
+//                     notification: 'Friend request received',
+//                     receiver: value.receiver,
+//                     timestamp: value.timestamp,
+//                     sender
+//                 })
+//             })
+//     })
+
+
+exports.sendFriendRequestNotification = functions.firestore.document('friends/{friendId}')
+    .onCreate((snap) => {
+        const value = snap.data()
+
+        db.collection('users').doc(value.sender).get()
+            .then(user => {
+                const sender = user.data()
+
+                return db.collection('notifications').doc().set({
+                    notification: 'Friend request received',
+                    receiver: value.receiver,
+                    timestamp: Date.now(),
+                    sender
+                })
+            })
     })
 
-exports.addMessage = functions.https.onCall((data, context) => {
-    if (!context.auth)
-        throw new functions.https.HttpsError('failed-precondition', 'The function must be called while authenticated.')
+exports.sendFriendAcceptedNotification = functions.firestore.document('friends/{friendId}')
+    .onUpdate((change) => {
+        const newValue = change.after.data()
 
-    const text = data.text;
-    
-    const uid = context.auth.uid;
-    const name = context.auth.token.name || null;
-    const picture = context.auth.token.picture || null;
-    const email = context.auth.token.email || null;
+        if (newValue.status !== 'friends') return
 
-    return admin.database().ref('/messages').push({
-            text,
-            author: {
-                uid,
-                name,
-                picture,
-                email
-            }
-        })
-        .then(() => {
-            console.log(`${uid || name}: ${text}`)
-            return { text }
-        })
-})
+        db.collection('users').doc(newValue.receiver).get()
+            .then(user => {
+                const sender = user.data()
+
+                return db.collection('notifications').doc().set({
+                    notification: 'Friend request accepted',
+                    receiver: newValue.sender,
+                    timestamp: Date.now(),
+                    sender
+                })
+            })
+    })

@@ -260,6 +260,11 @@ form {
     object-fit: cover;
     display: block;
 
+    &--small {
+        width: 50px;
+        height: 50px;
+    }
+
     &--round {
         border-radius: 100%;
         border: 3px solid $white;
@@ -346,6 +351,46 @@ form {
 
         &:not(:last-child) {
             margin-right: 20px;
+        }
+    }
+}
+
+.notifications__container {
+    margin-top: 10px;
+
+    .notification {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-decoration: none;
+        will-change: background-color;
+        transition: 300ms ease-in-out background-color;
+        padding: 10px;
+
+        .notification__content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        &:hover {
+            background-color: $grey;
+        }
+
+        .text {
+            padding: 0 10px;
+            position: relative;
+
+            + .text {
+                &:before {
+                    content: '-';
+                    color: $black;
+                    position: absolute;
+                    left: 0;
+                    transform: translateX(-50%);
+                }
+            }
         }
     }
 }
