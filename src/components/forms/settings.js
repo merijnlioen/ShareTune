@@ -76,7 +76,7 @@ const SettingsForm = ({ user, firebase, showMessage }) => {
                         label="banner image"
                         fullWidth
                         photo={user.banner}
-                        validate={maxFileSize(1000000)}
+                        validate={maxFileSize(2000000)}
                     />
 
                     <Field 
