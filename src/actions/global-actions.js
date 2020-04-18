@@ -32,6 +32,7 @@ export const observeAuthChange = firebase => dispatch => {
                 })
             }
 
+            firebase.doSignOut()
             dispatch(showMessage('Please verify your e-mail'))
         }
         dispatch(updateUser({}))
