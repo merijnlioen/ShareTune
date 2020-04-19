@@ -276,6 +276,10 @@ form {
     height: 300px;
     object-fit: cover;
     display: block;
+
+    @include breakpoint(small) {
+        height: 200px;
+    }
 }
 
 .not-found {
@@ -294,14 +298,14 @@ form {
         transform: translateY(-50%) translateX(-50%);
         position: absolute;
         left: calc(50%);
+
+        & + .text-center {
+            padding-top: 100px;
+        }
     }
 
     .text-center {
         padding-top: 20px;
-
-        @include breakpoint(small) {
-            padding-top: 100px;
-        }
     }
 
     .action__container {
