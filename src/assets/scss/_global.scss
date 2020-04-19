@@ -407,3 +407,29 @@ form {
         }
     }
 }
+
+
+.notifications {
+    position: fixed;
+    display: flex;
+    flex-direction: column-reverse;
+    right: 0;
+    bottom: 0;
+    padding: 20px;
+
+    .notification {
+        padding: 10px 15px;
+        background-color: $grey;
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: row;
+
+        .notification__content {
+            margin-left: 10px;
+        }
+
+        svg {
+            margin-left: 10px;
+        }
+    }
+}
