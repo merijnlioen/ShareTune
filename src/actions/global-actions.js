@@ -18,6 +18,11 @@ export const updateIsMessageOpened = value => ({
     value
 })
 
+export const updateNotifications = value => ({
+    type: 'UPDATE_NOTIFICATIONS',
+    value
+})
+
 
 
 
@@ -37,6 +42,15 @@ export const observeAuthChange = firebase => dispatch => {
         }
         dispatch(updateUser({}))
     })
+}
+
+export const observerNotificationChange = firebase => dispatch => {
+    return firebase.db.collection('notifications')
+        .where('receiver', '==', firebase.auth.currentUser.uid)
+        .onSnapshot(snapshot => {
+            const notifications = snapshot.docs.map(notifications => notifications.data())
+            dispatch(updateNotifications(notifications))
+        })
 }
 
 export const showMessage = message => dispatch => {

@@ -3,6 +3,7 @@ const initialState = {
     isMobile: false,
     message: null,
     isMessageOpen: true,
+    notifications: []
 }
 
 const global = (state = initialState, action) => {
@@ -27,6 +28,12 @@ const global = (state = initialState, action) => {
             return {
                 ...state,
                 isMessageOpen: action.value
+            }
+        }
+        case 'UPDATE_NOTIFICATIONS': {
+            return {
+                ...state,
+                notifications: action.value
             }
         }
         default:
