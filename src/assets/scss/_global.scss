@@ -372,10 +372,19 @@ form {
         transition: 300ms ease-in-out background-color;
         padding: 10px;
 
+        @include breakpoint(medium) {
+            flex-direction: column;
+            align-items: start;
+        }
+
         .notification__content {
             display: flex;
             flex-direction: row;
             align-items: center;
+
+            @include breakpoint(medium) {
+                margin-bottom: 10px;
+            }
         }
 
         &:hover {
