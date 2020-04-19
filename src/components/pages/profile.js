@@ -81,9 +81,9 @@ const ProfilePage = ({ firebase }) => {
 
     const getFriendId = () => {
         if (userId > id) {
-            return `${userId}${id}`
+            return `${userId}_${id}`
         } else {
-            return `${id}${userId}`
+            return `${id}_${userId}`
         }
     }
 
