@@ -361,6 +361,8 @@ form {
 
 .notifications__container {
     margin-top: 10px;
+    display: flex;
+    flex-direction: column-reverse;
 
     .notification {
         display: flex;
@@ -412,7 +414,7 @@ form {
 .notifications {
     position: fixed;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     right: 0;
     bottom: 0;
     padding: 20px;
@@ -430,6 +432,7 @@ form {
 
         svg {
             margin-left: 10px;
+            cursor: pointer;
         }
     }
 }
