@@ -324,7 +324,7 @@ form {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    overflow: scroll;
+    overflow-x: scroll;
     margin-top: 10px;
 
     .trending__profile {
