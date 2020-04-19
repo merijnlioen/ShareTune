@@ -21,7 +21,6 @@ const Home = ({ firebase }) => {
             <div className="trending__profile__container">
                 {trendingProfiles?.map((profile, index) => (
                     <Link to={`/profile/${profile.id}`} key={index} className="trending__profile">
-                        {console.log(profile)}
                         <div className="trending__profile__overlay" />
                         <p className="trending__profile__username">{profile.username}</p>
 

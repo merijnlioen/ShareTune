@@ -37,7 +37,6 @@ export const observeAuthChange = firebase => dispatch => {
                 })
             }
 
-            firebase.doSignOut()
             dispatch(showMessage('Please verify your e-mail'))
         }
         dispatch(updateUser({}))
@@ -49,7 +48,7 @@ export const observerNotificationChange = firebase => dispatch => {
         .where('receiver', '==', firebase.auth.currentUser.uid)
         .onSnapshot(snapshot => {
             const notifications = snapshot.docs.map(notifications => notifications.data())
-            dispatch(updateNotifications(notifications))
+            dispatch(updateNotifications(notifications.sort((a, b) => a.timestamp - b.timestamp)))
         })
 }
 

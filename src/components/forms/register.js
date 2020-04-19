@@ -16,16 +16,25 @@ const RegisterForm = ({ firebase }) => {
         if (doesUsernameExist) return { [FORM_ERROR]: 'Username already in use' } 
 
         firebase.doCreateUserWithEmailAndPassword(values.email, values.password)
-            .then(authUser =>  {
-                firebase.db.collection('users').doc(authUser.user.uid).set({
+            .then(async authUser =>  {
+                await firebase.db.collection('users').doc(authUser.user.uid).set({
                     username: values.username,
                     id: authUser.user.uid
                 })
+                    .catch(error => {
+                        console.log(error)
+                    })
 
-                firebase.db.collection('usernames').doc(values.username.toLowerCase()).set({
+                await firebase.db.collection('usernames').doc(values.username.toLowerCase()).set({
                     id: authUser.user.uid
                 })
+                    .catch(error => {
+                        console.log(error)
+                    })
+
+                return authUser
             })
+            .then(() => firebase.doSignOut())
             .then(() => history.push('/'))
             .catch(error => {
                 return { [FORM_ERROR]: error.message }
