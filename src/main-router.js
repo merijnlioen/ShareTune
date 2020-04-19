@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { observeAuthChange, updateIsMobile } from './actions/global-actions'
 import { connect } from 'react-redux'
+import { withFirebase } from './firebase'
 import variables from './assets/scss/app.scss'
 import Loading from './components/shared/loading'
 import Message from './components/shared/message'
@@ -9,7 +10,7 @@ import Message from './components/shared/message'
 import GuestRouter from './guest-router'
 import UserRouter from './user-router'
 
-const MainRouter = ({ user, isMobile, updateIsMobile, observeAuthChange }) => {
+const MainRouter = ({ user, isMobile, updateIsMobile, observeAuthChange, firebase }) => {
     useEffect(() => {
         window.addEventListener('resize', onResize)
 
@@ -17,7 +18,7 @@ const MainRouter = ({ user, isMobile, updateIsMobile, observeAuthChange }) => {
     }, [isMobile])
 
     useEffect(() => {
-        observeAuthChange()
+        observeAuthChange(firebase)
         onResize()
     }, [])
 
@@ -49,9 +50,9 @@ const mapStateToProps = state => ({
     isMobile: state.global.isMobile
 })
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-    observeAuthChange: () => dispatch(observeAuthChange(ownProps.firebase)),
+const mapDispatchToProps = dispatch => ({
+    observeAuthChange: firebase => dispatch(observeAuthChange(firebase)),
     updateIsMobile: value => dispatch(updateIsMobile(value))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainRouter)
+export default connect(mapStateToProps, mapDispatchToProps)(withFirebase(MainRouter))

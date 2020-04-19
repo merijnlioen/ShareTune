@@ -9,11 +9,7 @@ import { Provider } from 'react-redux'
 ReactDOM.render(
   <Provider store={store}>
     <FirebaseContext.Provider value={ new Firebase() }>
-      <FirebaseContext.Consumer>
-        {firebase => (
-          <MainRouter firebase={firebase} />
-        )}
-      </FirebaseContext.Consumer>
+      <MainRouter />
     </FirebaseContext.Provider>
   </Provider>,
   document.getElementById('root')
