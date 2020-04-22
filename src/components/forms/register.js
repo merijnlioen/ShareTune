@@ -15,7 +15,7 @@ const RegisterForm = ({ firebase }) => {
             
         if (doesUsernameExist) return { [FORM_ERROR]: 'Username already in use' } 
 
-        firebase.doCreateUserWithEmailAndPassword(values.email, values.password)
+        return firebase.doCreateUserWithEmailAndPassword(values.email, values.password)
             .then(async authUser =>  {
                 await firebase.db.collection('users').doc(authUser.user.uid).set({
                     username: values.username,
@@ -44,7 +44,7 @@ const RegisterForm = ({ firebase }) => {
     return (
         <Form
             onSubmit={register}
-            render={({ handleSubmit, submitError }) => (
+            render={({ handleSubmit, submitError, submitting }) => (
                 <form onSubmit={handleSubmit}>
                     <h2 className="heading heading--primary">Register</h2>
                     <p className="text">Please enter the fields below to create an account</p>
@@ -84,7 +84,7 @@ const RegisterForm = ({ firebase }) => {
                     {submitError && <p className="form__error">{submitError}</p>}
 
                     <div className="action__container">
-                        <button className="button">Submit</button>  
+                        <button disabled={submitting} className="button">Submit</button>  
                     </div>
                 </form>
             )}
