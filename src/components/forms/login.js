@@ -21,7 +21,7 @@ const LoginForm = ({ firebase }) => {
     return (
         <Form
             onSubmit={login}
-            render={({ handleSubmit, submitError }) => (
+            render={({ handleSubmit, submitError, submitting }) => (
                 <form onSubmit={handleSubmit}>
                     <h2 className="heading heading--primary">Login</h2>
                     <p className="text">Please enter your login credentials to continue</p>
@@ -45,7 +45,7 @@ const LoginForm = ({ firebase }) => {
                     {submitError && <p className="form__error">{submitError}</p>}
 
                     <div className="action__container">
-                        <button className="button">Submit</button>  
+                        <button disabled={submitting} className="button">Submit</button>  
                     </div>
                 </form>
             )}
