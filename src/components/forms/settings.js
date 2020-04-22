@@ -21,7 +21,7 @@ const SettingsForm = ({ user, firebase, showMessage }) => {
         if (avatarUrl) {
             profile.avatar = avatarUrl
 
-            authUser.updateProfile({
+            await authUser.updateProfile({
                 photoURL: avatarUrl
             })
         }
@@ -29,10 +29,10 @@ const SettingsForm = ({ user, firebase, showMessage }) => {
         if (values.bio) profile.bio = values.bio
 
         if(values.bio || avatarUrl || bannerUrl) {
-            firebase.db.collection('users').doc(authUser.uid).update(profile)
+            await firebase.db.collection('users').doc(authUser.uid).update(profile)
         }
 
-        showMessage('Settings saved succesfully')
+        return showMessage('Settings saved succesfully')
     }
 
     const uploadImage = (file, type) => {
@@ -60,7 +60,7 @@ const SettingsForm = ({ user, firebase, showMessage }) => {
                 username: user.username,
                 bio: user.bio,
             }}
-            render={({ handleSubmit, submitError }) => (
+            render={({ handleSubmit, submitError, submitting }) => (
                 <form onSubmit={handleSubmit} encType="multipart/form-data">
                     <Field 
                         name="avatar"
@@ -99,7 +99,7 @@ const SettingsForm = ({ user, firebase, showMessage }) => {
                     {submitError && <p className="form__error">{submitError}</p>}
 
                     <div className="action__container">
-                        <button className="button">Submit</button>  
+                        <button disabled={submitting} className="button">Submit</button>  
                     </div>
                 </form>
             )}

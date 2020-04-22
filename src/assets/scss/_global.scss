@@ -228,7 +228,7 @@ form {
 }
 
 .button {
-    color: white;
+    color: $white;
     background-color: $primary;
     border: none;
     padding: 10px 40px;
@@ -236,6 +236,10 @@ form {
     font-family: $primary-font;
     text-transform: uppercase;
     transition: 100ms ease-in-out background-color, 100ms ease-in-out transform;
+
+    &:disabled {
+        background-color: $dark-grey;
+    }
 
     &:hover {
         background-color: darken($primary, 10%);
