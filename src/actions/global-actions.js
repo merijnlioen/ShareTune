@@ -47,7 +47,12 @@ export const observerNotificationChange = firebase => dispatch => {
     return firebase.db.collection('notifications')
         .where('receiver', '==', firebase.auth.currentUser.uid)
         .onSnapshot(snapshot => {
-            const notifications = snapshot.docs.map(notifications => notifications.data())
+            const notifications = snapshot.docs.map(notification => {
+                return {
+                    ...notification.data(),
+                    id: notification.id
+                }
+            })
             dispatch(updateNotifications(notifications.sort((a, b) => a.timestamp - b.timestamp)))
         })
 }
