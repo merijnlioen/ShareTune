@@ -19,7 +19,8 @@ const RegisterForm = ({ firebase }) => {
             .then(async authUser =>  {
                 await firebase.db.collection('users').doc(authUser.user.uid).set({
                     username: values.username,
-                    id: authUser.user.uid
+                    id: authUser.user.uid,
+                    timestamp: Date.now()
                 })
                     .catch(error => {
                         console.log(error)

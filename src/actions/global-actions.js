@@ -1,3 +1,4 @@
+// Actions
 export const updateUser = value => ({
     type: 'UPDATE_USER',
     value
@@ -25,7 +26,7 @@ export const updateNotifications = value => ({
 
 
 
-
+// Thunks
 export const observeAuthChange = firebase => dispatch => {
     firebase.auth.onAuthStateChanged(authUser => {
         if (authUser) {
@@ -72,3 +73,10 @@ export const signOut = (firebase, history) => dispatch => {
             console.error(error)
         })
 }
+
+
+// Functions
+export const getMostRecentProfiles = firebase =>
+    firebase.db.collection('users').orderBy('timestamp', 'desc').limit(8).get()
+        .then(querySnapshot => querySnapshot.docs.map(user => user.data()))
+        .catch(error => console.log(error))

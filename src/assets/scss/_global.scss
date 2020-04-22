@@ -80,12 +80,19 @@ body {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .trending {
-        height: 200px;
-        background-color: $grey;
+    .trending__profile {
+        &:not(:last-child) {
+            margin: 0;
+        }
 
-        @include breakpoint(small) {
-            height: 150px;
+        .avatar {
+            height: 200px;
+            width: 100%;
+            background-color: $grey;
+
+            @include breakpoint(small) {
+                height: 150px;
+            }
         }
     }
 }
@@ -328,39 +335,49 @@ form {
     text-align: center;
 }
 
+.trending__profile {
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+
+    &__username {
+        position: absolute;
+        bottom: 0;
+        color: white;
+        font-family: $primary-font;
+        font-size: $font-size-sm;
+        padding: 10px;
+    }
+
+    &__overlay {
+        height: 50px;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        position: absolute;
+        background: linear-gradient(to top, rgba($black, .8), transparent);
+        transform: translateY(100%);
+        transition: 300ms ease-in-out transform;
+        will-change: transform;
+    }
+
+    &:hover {
+        .trending__profile__overlay {
+            transform: translateY(0);
+        }
+    }
+
+    &:not(:last-child) {
+        margin-right: 20px;
+    }
+}
+
 .trending__profile__container {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     overflow-x: scroll;
     margin-top: 10px;
-
-    .trending__profile {
-        flex-shrink: 0;
-        position: relative;
-
-        &__username {
-            position: absolute;
-            bottom: 0;
-            color: white;
-            font-family: $primary-font;
-            font-size: $font-size-sm;
-            padding: 10px;
-        }
-
-        &__overlay {
-            height: 50px;
-            width: 100%;
-            left: 0;
-            bottom: 0;
-            position: absolute;
-            background: linear-gradient(to top, rgba($black, .8), transparent);
-        }
-
-        &:not(:last-child) {
-            margin-right: 20px;
-        }
-    }
 }
 
 .notifications__container {
