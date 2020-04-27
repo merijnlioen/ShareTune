@@ -359,6 +359,10 @@ form {
         transform: translateY(100%);
         transition: 300ms ease-in-out transform;
         will-change: transform;
+
+        @include breakpoint(small) {
+            transform: translateY(0);
+        }
     }
 
     &:hover {

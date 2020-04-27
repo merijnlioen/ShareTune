@@ -14,9 +14,10 @@
         .usp {
             @include breakpoint(small) {
                 & + .usp {
-                    margin-top: 25px;
+                    margin-top: 50px;
                 }
             }
+
             &__image {
                 border-radius: 100%;
                 width: 100px;
