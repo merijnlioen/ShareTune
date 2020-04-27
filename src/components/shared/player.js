@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { updateActiveSong, updateIsPlaying, updateIsLoading } from '../../actions/player-actions'
 import Pause from 'react-ionicons/lib/MdPause'
 import Play from 'react-ionicons/lib/MdPlay'
+import Loading from 'react-ionicons/lib/MdRefresh'
 
 const Player = ({ song, updateActiveSong, activeSong, isPlaying, updateIsPlaying, updateIsLoading, isLoading }) => (
     <div className="player" style={{ backgroundImage: 'url(https://images.pexels.com/photos/3312664/pexels-photo-3312664.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)' }}>
@@ -12,16 +13,18 @@ const Player = ({ song, updateActiveSong, activeSong, isPlaying, updateIsPlaying
         </div>
         
         <div className="player__actions">
+            {(song.id === activeSong?.id && isLoading) &&
+                <Loading rotate={true} />
+            }
+
             {(song.id === activeSong?.id) && isPlaying && !isLoading && <Pause onClick={() => updateIsPlaying(false)} />}
 
-            {(song.id !== activeSong?.id || (!isPlaying && (song.id === activeSong?.id)) || isLoading) && <Play onClick={() => {
-                if (isLoading) return
-
+            {(song.id !== activeSong?.id || (!isPlaying && (song.id === activeSong?.id))) && <Play onClick={() => {
                 if (song.id !== activeSong?.id) {
                     updateIsLoading(true)
                     updateActiveSong(song)
                 }
-                
+
                 updateIsPlaying(true)
             }} />}
         </div>
