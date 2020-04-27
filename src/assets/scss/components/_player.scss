@@ -1,0 +1,147 @@
+.players__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    margin-top: 10px;
+
+    @include breakpoint(small) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.player {
+    width: 100%;
+    height: 250px;
+    background-color: $primary;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .player__info {
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        width: 100%;
+
+        .text {
+            color: $white;
+            font-size: $font-size-md;
+            filter: drop-shadow(0 1px 1px rgba($black, 0.5));
+        }
+    }
+
+    .player__actions {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+            user-select: none;
+            cursor: pointer;
+            fill: $white;
+            font-size: 100px;
+            width: 60px;
+            height: 60px;
+            filter: drop-shadow(0 1px 2px rgba($black, 0.25));
+        }
+    }
+}
+
+.main-player {
+    position: fixed;
+    bottom: 0;
+    width: calc(100% - 250px);
+    background-color: $grey;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 20px;
+
+    @include breakpoint(small) {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .main-player__info {
+        padding: 20px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        flex: 1;
+
+        @include breakpoint(small) {
+            align-items: center;
+            padding: 10px 0;
+        }
+        
+        .song__name {
+            font-family: $primary-font;
+            font-size: $font-size-sm;
+        }
+        
+        .song__artist {
+            font-family: $secondary-font;
+            font-size: $font-size-sm;
+        }
+    }
+
+    .main-player__actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 0;
+
+        @include breakpoint(small) {
+            padding: 10px 0;
+        }
+
+        svg {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            user-select: none;
+        }
+    }
+
+    .main-player__volume {
+        padding: 20px 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex: 1;
+
+        @include breakpoint(small) {
+            justify-content: center;
+        }
+        
+        input {
+            -webkit-appearance: none;
+            width: 100px;
+            height: 1px;
+            background: $dark-grey;
+        }
+        
+        input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%; 
+            background: $primary;
+            cursor: pointer;
+        }
+        
+        input::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%; 
+            background: $primary;
+            cursor: pointer;
+        }
+    }
+}

@@ -76,7 +76,7 @@ export const signOut = (firebase, history) => dispatch => {
 
 
 // Functions
-export const getMostRecentProfiles = firebase =>
-    firebase.db.collection('users').orderBy('timestamp', 'desc').limit(8).get()
+export const getMostRecentProfiles = (firebase, limit = 8) =>
+    firebase.db.collection('users').orderBy('timestamp', 'desc').limit(limit).get()
         .then(querySnapshot => querySnapshot.docs.map(user => user.data()))
         .catch(error => console.log(error))

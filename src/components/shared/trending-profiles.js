@@ -4,11 +4,11 @@ import { withFirebase } from '../../firebase'
 import { Link } from 'react-router-dom'
 import Avatar from './avatar'
 
-const TrendingProfiles = ({ firebase }) => {
+const TrendingProfiles = ({ firebase, limit }) => {
     const [trendingProfiles, setTrendingProfiles] = useState()
 
     useEffect(() => {
-        getMostRecentProfiles(firebase)
+        getMostRecentProfiles(firebase, limit)
             .then(users => setTrendingProfiles(users))
     }, [])
 

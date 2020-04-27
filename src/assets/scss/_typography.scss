@@ -68,7 +68,8 @@ $secondary-font: 'NotoSans', 'sans-serif';
 .subheading {
     font-family: $secondary-font;
     font-size: $font-size-md;
-    margin-top: 10px;
+    color: $black;
+    margin-top: 20px;
 }
 
 .text {
