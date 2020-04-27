@@ -13,7 +13,7 @@ const Player = ({ song, updateActiveSong, activeSong, isPlaying, updateIsPlaying
         <div className="player__actions">
             {(song.id === activeSong?.id) && isPlaying && <Pause onClick={() => updateIsPlaying(false)} />}
 
-            {(song.id !== activeSong?.id || !isPlaying && (song.id === activeSong?.id)) && <Play onClick={() => {
+            {(song.id !== activeSong?.id || (!isPlaying && (song.id === activeSong?.id))) && <Play onClick={() => {
                 if (song.id !== activeSong?.id) updateActiveSong(song)
                 updateIsPlaying(true)
             }} />}

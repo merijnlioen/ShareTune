@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, Fragment } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { updateIsPlaying } from '../../actions/player-actions'
 import { CSSTransition } from 'react-transition-group'

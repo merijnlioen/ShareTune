@@ -1,4 +1,4 @@
-import React, { Suspense, Fragment } from 'react'
+import React, { Suspense } from 'react'
 import Logo from './logo'
 import { CSSTransition } from 'react-transition-group'
 
