@@ -10,19 +10,21 @@ const Player = ({ song, updateActiveSong, activeSong, isPlaying, updateIsPlaying
             <p className="text">{song.title}</p>
             <p className="text">{song.artist}</p>
         </div>
-        {!isLoading &&
-            <div className="player__actions">
-                {(song.id === activeSong?.id) && isPlaying && <Pause onClick={() => updateIsPlaying(false)} />}
+        
+        <div className="player__actions">
+            {(song.id === activeSong?.id) && isPlaying && !isLoading && <Pause onClick={() => updateIsPlaying(false)} />}
 
-                {(song.id !== activeSong?.id || (!isPlaying && (song.id === activeSong?.id))) && <Play onClick={() => {
-                    if (song.id !== activeSong?.id) {
-                        updateIsLoading(true)
-                        updateActiveSong(song)
-                    }
-                    updateIsPlaying(true)
-                }} />}
-            </div>
-        }
+            {(song.id !== activeSong?.id || (!isPlaying && (song.id === activeSong?.id)) || isLoading) && <Play onClick={() => {
+                if (isLoading) return
+
+                if (song.id !== activeSong?.id) {
+                    updateIsLoading(true)
+                    updateActiveSong(song)
+                }
+                
+                updateIsPlaying(true)
+            }} />}
+        </div>
     </div>
 )
 

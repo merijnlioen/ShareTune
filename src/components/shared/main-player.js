@@ -7,22 +7,33 @@ import Play from 'react-ionicons/lib/MdPlay'
 
 const MainPlayer = ({ updateIsPlaying, isPlaying, activeSong, updateIsLoading, isLoading }) => {
     const [volume, setVolume] = useState(50)
-    const [currentSong, setCurrentSong] = useState()
     const [rangeValue, setRangeValue] = useState(0)
     const player = useRef()
 
     useEffect(() => {
         if (!activeSong) return
-        if (currentSong?.id !== activeSong.id) return
 
-        if (isPlaying) {
-            player.current.play()
-                .then(() => {
-                    updateIsLoading(false)
-                })
-        }
-        else player.current.pause()
+        if (isPlaying) return play()
+        return pause()
     }, [isPlaying])
+
+    const play = () => {
+        if (isLoading) return
+
+        player.current.play()
+            .then(() => {
+                updateIsPlaying(true)
+                updateIsLoading(false)
+            })
+    }
+
+    const pause = () => {
+        if (isLoading) return
+        
+        player.current.pause()
+        updateIsLoading(false)
+        updateIsPlaying(false)
+    }
 
     useEffect(() => {
         if (!activeSong) return
@@ -38,9 +49,7 @@ const MainPlayer = ({ updateIsPlaying, isPlaying, activeSong, updateIsLoading, i
         player.current.play()
             .then(() => {
                 updateIsLoading(false)
-                setCurrentSong(activeSong)
             })
-
     }, [activeSong])
 
     const onTimeUpdate = currentTime => {
@@ -73,12 +82,8 @@ const MainPlayer = ({ updateIsPlaying, isPlaying, activeSong, updateIsLoading, i
                 </div>
         
                 <div className="main-player__actions">
-                    {!isLoading &&
-                        <Fragment>
-                            {isPlaying && <Pause onClick={() => updateIsPlaying(false)} />}
-                            {!isPlaying && <Play onClick={() => updateIsPlaying(true)} />}
-                        </Fragment>
-                    }
+                    {(isPlaying && !isLoading) && <Pause onClick={() => pause()} />}
+                    {(!isPlaying || isLoading) && <Play onClick={() => play()} />}
                 </div>
         
                 <div className="main-player__volume">
