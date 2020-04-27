@@ -8,6 +8,7 @@ import Play from 'react-ionicons/lib/MdPlay'
 const MainPlayer = ({ updateIsPlaying, isPlaying, activeSong }) => {
     const [volume, setVolume] = useState(50)
     const [currentSong, setCurrentSong] = useState()
+    const [rangeValue, setRangeValue] = useState(0)
     const player = useRef()
 
     useEffect(() => {
@@ -15,7 +16,6 @@ const MainPlayer = ({ updateIsPlaying, isPlaying, activeSong }) => {
         if (currentSong?.id !== activeSong.id) return
 
         if (isPlaying) {
-            player.current.load()
             player.current.play()
         }
         else player.current.pause()
@@ -39,6 +39,16 @@ const MainPlayer = ({ updateIsPlaying, isPlaying, activeSong }) => {
 
     }, [activeSong])
 
+    const onTimeUpdate = currentTime => {
+        if (!player.current.duration) return
+
+        setRangeValue(1000 / player.current.duration * currentTime)
+    }
+
+    const updateCurrentTime = value => {
+        player.current.currentTime = player.current.duration / 1000 * value
+    }
+
     return (
         <CSSTransition
             in={!!activeSong}
@@ -47,7 +57,9 @@ const MainPlayer = ({ updateIsPlaying, isPlaying, activeSong }) => {
             unmountOnExit
         >
             <div className="main-player">
-                <audio ref={player}>
+                <input type="range" className="time-range" min={0} max={1000} value={rangeValue} onChange={e => updateCurrentTime(e.currentTarget.value)} />
+
+                <audio ref={player} onTimeUpdate={e => onTimeUpdate(e.currentTarget.currentTime)}>
                     <source src={activeSong?.song} type="audio/mpeg" />
                 </audio>
 
