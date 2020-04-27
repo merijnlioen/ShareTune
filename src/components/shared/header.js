@@ -76,6 +76,7 @@ export const UserHeader = connect(mapStateToProps, mapDispatchToProps)(withFireb
                         </Link>
 
                         <NavLink to={'/'} exact className="header__nav__link">Home</NavLink>
+                        <NavLink to={'/upload'} exact className="header__nav__link">Upload</NavLink>
                         <NavLink to={'/notifications'} exact className="header__nav__link">Notifications</NavLink>
                         <NavLink to={'/settings'} className="header__nav__link">Settings</NavLink>
                     </div>

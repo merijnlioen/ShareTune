@@ -6,6 +6,7 @@ import { observerNotificationChange } from './actions/global-actions'
 import { withFirebase } from './firebase'
 import Home from './components/pages/user/home'
 import Settings from './components/pages/user/settings'
+import Upload from './components/pages/user/upload'
 import Notifications from './components/pages/user/notifications'
 import SharedRoutes from './shared-routes'
 import NotificationContainer from './components/shared/notification'
@@ -25,6 +26,7 @@ const UserRouter = ({ observerNotificationChange, firebase }) => {
                     <Switch>
                         <Route path="/" exact component={Home} />
                         <Route path="/settings" exact component={Settings} />
+                        <Route path="/upload" exact component={Upload} />
                         <Route path="/notifications" exact component={Notifications} />
                         <SharedRoutes />
                     </Switch>

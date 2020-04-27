@@ -6,7 +6,7 @@ import Play from 'react-ionicons/lib/MdPlay'
 import Loading from 'react-ionicons/lib/MdRefresh'
 
 const Player = ({ song, updateActiveSong, activeSong, isPlaying, updateIsPlaying, updateIsLoading, isLoading }) => (
-    <div className="player" style={{ backgroundImage: 'url(https://images.pexels.com/photos/3312664/pexels-photo-3312664.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)' }}>
+    <div className="player" style={{ backgroundImage: `url(${song.background})` }}>
         <div className="player__info">
             <p className="text">{song.title}</p>
             <p className="text">{song.artist}</p>

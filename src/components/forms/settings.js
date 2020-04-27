@@ -39,7 +39,7 @@ const SettingsForm = ({ user, firebase, showMessage }) => {
         if (!file) return
 
         const authUser = firebase.auth.currentUser
-        const storageRef = firebase.storage.ref(`${authUser.uid}/${type}.${file.name.split('.').pop()}`)
+        const storageRef = firebase.storage.ref(`${authUser.uid}/images/${type}.${file.name.split('.').pop()}`)
         
         return storageRef.put(file)
             .then(snapshot => {

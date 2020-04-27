@@ -36,8 +36,9 @@ export const maxFileSize = max => value =>
     : undefined
 
 const acceptedAudioFiles = [
-  "audio/mp3",
-  "audio/wav"
+  'audio/mp3',
+  'audio/wav',
+  'audio/mpeg'
 ]
 
 export const audioFile = value =>
