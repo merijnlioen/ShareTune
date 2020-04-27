@@ -12,3 +12,8 @@ export const updateActiveSong = value => ({
     type: 'UPDATE_ACTIVE_SONG',
     value
 })
+
+export const updateIsLoading = value => ({
+    type: 'UPDATE_IS_LOADING',
+    value
+})

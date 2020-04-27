@@ -1,5 +1,6 @@
 const initialState = {
     isPlaying: false,
+    isLoading: false,
     activeSong: null,
     songs: []
 }
@@ -20,6 +21,11 @@ const player = (state = initialState, action) => {
             return {
                 ...state,
                 activeSong: action.value
+            }
+        case 'UPDATE_IS_LOADING':
+            return {
+                ...state,
+                isLoading: action.value
             }
         default:
             return state

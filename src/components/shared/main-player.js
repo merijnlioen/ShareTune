@@ -1,11 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { updateIsPlaying } from '../../actions/player-actions'
+import { updateIsPlaying, updateIsLoading } from '../../actions/player-actions'
 import { CSSTransition } from 'react-transition-group'
 import Pause from 'react-ionicons/lib/MdPause'
 import Play from 'react-ionicons/lib/MdPlay'
 
-const MainPlayer = ({ updateIsPlaying, isPlaying, activeSong }) => {
+const MainPlayer = ({ updateIsPlaying, isPlaying, activeSong, updateIsLoading, isLoading }) => {
     const [volume, setVolume] = useState(50)
     const [currentSong, setCurrentSong] = useState()
     const [rangeValue, setRangeValue] = useState(0)
@@ -17,6 +17,9 @@ const MainPlayer = ({ updateIsPlaying, isPlaying, activeSong }) => {
 
         if (isPlaying) {
             player.current.play()
+                .then(() => {
+                    updateIsLoading(false)
+                })
         }
         else player.current.pause()
     }, [isPlaying])
@@ -34,6 +37,7 @@ const MainPlayer = ({ updateIsPlaying, isPlaying, activeSong }) => {
         player.current.load()
         player.current.play()
             .then(() => {
+                updateIsLoading(false)
                 setCurrentSong(activeSong)
             })
 
@@ -69,8 +73,12 @@ const MainPlayer = ({ updateIsPlaying, isPlaying, activeSong }) => {
                 </div>
         
                 <div className="main-player__actions">
-                    {isPlaying && <Pause onClick={() => updateIsPlaying(false)} />}
-                    {!isPlaying && <Play onClick={() => updateIsPlaying(true)} />}
+                    {!isLoading &&
+                        <Fragment>
+                            {isPlaying && <Pause onClick={() => updateIsPlaying(false)} />}
+                            {!isPlaying && <Play onClick={() => updateIsPlaying(true)} />}
+                        </Fragment>
+                    }
                 </div>
         
                 <div className="main-player__volume">
@@ -84,11 +92,13 @@ const MainPlayer = ({ updateIsPlaying, isPlaying, activeSong }) => {
 const mapStateToProps = state => ({
     isPlaying: state.player.isPlaying,
     songs: state.player.songs,
-    activeSong: state.player.activeSong
+    activeSong: state.player.activeSong,
+    isLoading: state.player.isLoading
 })
 
 const mapDispatchToProps = dispatch => ({
-    updateIsPlaying: value => dispatch(updateIsPlaying(value))
+    updateIsPlaying: value => dispatch(updateIsPlaying(value)),
+    updateIsLoading: value => dispatch(updateIsLoading(value))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPlayer)
