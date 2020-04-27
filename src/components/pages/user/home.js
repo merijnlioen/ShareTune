@@ -7,7 +7,7 @@ import Player from '../../shared/player'
 
 const Home = ({ firebase, updateSongs, songs }) => {
     useEffect(() => {
-        firebase.db.collection('songs').get()
+        firebase.db.collection('songs').limit(12).get()
             .then(snapshot => snapshot.docs.map(song => {
                 return {
                     ...song.data(),
