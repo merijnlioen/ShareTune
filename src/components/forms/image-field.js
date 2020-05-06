@@ -34,7 +34,7 @@ const ImageField = ({
     <div className="form__row form__row--image">
       <label htmlFor={label} className="row__label" >{label}</label>
       <label htmlFor={label} >
-        <img className={classNames({ 'banner': fullWidth }, { 'avatar': !fullWidth })} src={selectedPhoto || photo} />
+        <img className={classNames({ 'banner': fullWidth }, { 'avatar': !fullWidth })} src={selectedPhoto || photo} alt="avatar upload preview" />
       </label>
       <input
         className="hidden"

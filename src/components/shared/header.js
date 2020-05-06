@@ -43,7 +43,7 @@ export const UserHeader = connect(mapStateToProps, mapDispatchToProps)(withFireb
                 </div>
             }
             <CSSTransition
-                in={!isMobile || isMobile && isHeaderOpen}
+                in={!isMobile || (isMobile && isHeaderOpen)}
                 timeout={1000}
                 classNames={isMobile ? 'fade' : 'no-anim'}
                 unmountOnExit

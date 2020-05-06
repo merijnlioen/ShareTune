@@ -2,7 +2,6 @@ import React, { Fragment } from 'react'
 import Gradient from '../../../shared/gradient'
 import TrendingProfiles from '../../../shared/trending-profiles'
 import Footer from '../../../shared/footer'
-import Search from '../../../shared/search'
 import UniqueSellingpoints from '../../../shared/unique-sellingpoints'
 import Helmet from 'react-helmet'
 import { CSSTransition } from 'react-transition-group'
@@ -31,8 +30,6 @@ const Home = () => (
 
         <div className="content__container">
             <div className="inner">
-                {/* <Search placeholder="Search for Friends, Artists, Songs" /> */}
-
                 <h3 className="heading">Newest profiles</h3>
                 <div className="trending__container">
                     <TrendingProfiles />

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, Fragment } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { updateIsPlaying, updateIsLoading } from '../../actions/player-actions'
 import { CSSTransition } from 'react-transition-group'
@@ -72,7 +72,7 @@ const MainPlayer = ({ updateIsPlaying, isPlaying, activeSong, updateIsLoading, i
             <div className="main-player">
                 <input type="range" className="time-range" min={0} max={1000} value={rangeValue} onChange={e => updateCurrentTime(e.currentTarget.value)} />
 
-                <audio ref={player} onTimeUpdate={e => onTimeUpdate(e.currentTarget.currentTime)}>
+                <audio onPause={() => pause()} onPlay={() => play()} onEnded={() => pause()} ref={player} onTimeUpdate={e => onTimeUpdate(e.currentTarget.currentTime)}>
                     <source src={activeSong?.song} type="audio/mpeg" />
                 </audio>
 

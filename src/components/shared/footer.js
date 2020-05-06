@@ -1,5 +1,5 @@
 import React from 'react'
-import { Facebook, Instagram, LinkedIn, Github } from './icons'
+import { Facebook, Instagram, LinkedIn } from './icons'
 
 const Footer = () => (
     <footer className="footer">

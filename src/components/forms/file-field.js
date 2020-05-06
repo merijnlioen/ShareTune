@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 const adaptFileEventToValue = delegate =>
     e => delegate(e.target.files[0])
