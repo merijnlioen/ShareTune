@@ -34,10 +34,10 @@ const Home = () => (
             <div className="inner">
                 <UniqueSellingpoints />
 
-                <h3 className="heading">Newest profiles</h3>
+                {/* <h3 className="heading">Newest profiles</h3>
                 <div className="trending__container">
                     <TrendingProfiles />
-                </div>
+                </div> */}
             </div>
         </div>
 
