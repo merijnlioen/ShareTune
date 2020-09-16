@@ -237,6 +237,9 @@ form {
 
 .button {
     color: $white;
+    display: block;
+    width: fit-content;
+    text-decoration: none;
     background-color: $primary;
     border: none;
     padding: 10px 40px;
@@ -255,6 +258,23 @@ form {
 
     &:active {
         transform: translateY(5px);
+    }
+
+    &--outline {
+        background: none;
+        color: $white;
+        border: 1px solid $white;
+        will-change: color, background;
+        transition: 100ms ease-in-out background-color, 100ms ease-in-out transform, 100ms ease-in-out color;
+
+        &:hover {
+            background: $white;
+            color: $primary;
+        }
+    }
+
+    &--margin {
+        margin-top: 20px;
     }
 }
 

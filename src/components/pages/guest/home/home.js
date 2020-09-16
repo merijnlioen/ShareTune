@@ -5,6 +5,7 @@ import Footer from '../../../shared/footer'
 import UniqueSellingpoints from '../../../shared/unique-sellingpoints'
 import Helmet from 'react-helmet'
 import { CSSTransition } from 'react-transition-group'
+import { Link } from 'react-router-dom'
 
 const Home = () => (
     <Fragment>
@@ -22,7 +23,8 @@ const Home = () => (
                 >
                     <div>
                         <h1 className="title">Share your favourite tunes</h1>
-                        <h2 className="subtitle">Sign up for free and get started today.</h2>
+                        <h2 className="subtitle">Register for free and start sharing today!</h2>
+                        <Link to="/register" className="button button--outline button--margin">Register</Link>
                     </div>
                 </CSSTransition>
             </div>
@@ -30,12 +32,12 @@ const Home = () => (
 
         <div className="content__container">
             <div className="inner">
+                <UniqueSellingpoints />
+
                 <h3 className="heading">Newest profiles</h3>
                 <div className="trending__container">
                     <TrendingProfiles />
                 </div>
-
-                <UniqueSellingpoints />
             </div>
         </div>
 
