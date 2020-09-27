@@ -459,11 +459,18 @@ form {
 
 .notifications {
     position: fixed;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     right: 0;
     bottom: 0;
     padding: 20px;
+    will-change: transform;
+    transition: 500ms ease-in-out transform;
+
+    &--spacing {
+        transform: translateY(-80px);
+    }
 
     .notification {
         padding: 10px 15px;

@@ -4,9 +4,14 @@ import { connect } from 'react-redux'
 import { Close } from './icons'
 import { withFirebase } from '../../firebase'
 import Avatar from '../shared/avatar'
+import classNames from 'classnames'
 
-const NotificationContainer = ({ notifications, firebase }) => (
-    <div className="notifications">
+const NotificationContainer = ({ notifications, activeSong, firebase }) => (
+    <div className={classNames(
+        'notifications',
+        { 'notifications--spacing': !!activeSong?.id }
+    )}>
+        {console.log(!!activeSong?.id)}
         {notifications.map((notification, index) => (
             <Notification
                 notification={notification}
@@ -51,7 +56,8 @@ const Notification = ({ notification, firebase }) => {
 }
 
 const mapStateToProps = state => ({
-    notifications: state.global.notifications
+    notifications: state.global.notifications,
+    activeSong: state.player.activeSong
 })
 
 export default connect(mapStateToProps)(withFirebase(NotificationContainer))
