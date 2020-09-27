@@ -8,6 +8,7 @@ import { connect } from 'react-redux'
 import RenderField from './render-field'
 import ImageField from './image-field'
 import FileField from './file-field'
+import NoImage from '../../assets/img/no-image.png'
 
 const UploadForm = ({ firebase, showMessage }) => {
     const upload = async values => {
@@ -103,6 +104,7 @@ const UploadForm = ({ firebase, showMessage }) => {
                         name="background"
                         component={ImageField}
                         label="Background"
+                        photo={NoImage}
                         validate={maxFileSize(2000000)}
                     />
 
