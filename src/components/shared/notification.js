@@ -11,7 +11,6 @@ const NotificationContainer = ({ notifications, activeSong, firebase }) => (
         'notifications',
         { 'notifications--spacing': !!activeSong?.id }
     )}>
-        {console.log(!!activeSong?.id)}
         {notifications.map((notification, index) => (
             <Notification
                 notification={notification}
@@ -27,7 +26,6 @@ const Notification = ({ notification, firebase }) => {
         firebase.db.collection('notifications').doc(notification.id).update({
             seen: true
         })
-            .then(response => console.log(response))
             .catch(error => console.log(error))
     }
 

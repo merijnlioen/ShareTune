@@ -21,14 +21,7 @@ const Home = ({ firebase, updateSongs, songs }) => {
         <div className="inner">
             <h1 className="heading">Home</h1>
     
-            <h2 className="subheading">Trending profiles</h2>
-            <div className="trending__profile__container">
-                <TrendingProfiles
-                    limit={10}
-                />
-            </div>
-    
-            <h2 className="subheading">Songs</h2>
+            <h2 className="subheading">Recently uploaded songs</h2>
             <div className="players__container">
                 {songs.map((song, index) => (
                     <Player song={song} key={index} />
