@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 const NotFound = () => (
     <div className="not-found">
         <Helmet>
-            <title>Sharetune - Not Found</title>
+            <title>ShareTune - Not Found</title>
         </Helmet>
         
         <div className="inner">

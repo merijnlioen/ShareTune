@@ -94,7 +94,7 @@ const ProfilePage = ({ firebase }) => {
             {profileLoaded && profile &&
                 <div className="profile">
                     <Helmet>
-                        <title>{`Sharetune - Profile of ${profile?.username}`}</title>
+                        <title>{`ShareTune - Profile of ${profile?.username}`}</title>
                     </Helmet>
 
                     <div className="inner">
