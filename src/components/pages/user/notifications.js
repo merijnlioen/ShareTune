@@ -1,38 +1,24 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import Avatar from '../../shared/avatar'
+import Notification from './notification'
 
-const Notifications = ({ notifications }) => (
-    <div className="inner">
-        <h1 className="heading">Notifications</h1>
+const Notifications = ({ notifications }) => {
+    return (
+        <div className="inner">
+            <h1 className="heading">Notifications</h1>
 
-        <div className="notifications__container">
-            {notifications?.map((notification, index) => (
-                <Link to={`/profile/${notification.sender.id}`} key={index} className="notification">
-                    <div className="notification__content">
-                        <Avatar
-                            avatar={notification.sender.avatar}
-                            username={notification.sender.username}
-                            isRound
-                            isSmall
-                        />
+            <div className="notifications__container">
+                {notifications?.map((notification, index) => (
+                    <Notification key={index} notification={notification} />
+                ))}
 
-                        <p className="text">{notification.sender.username}</p>
-                        <p className="text text--primary">{notification.notification}</p>
-                    </div>
-                    <div className="timestamp">
-                        <p className="text">{new Date(notification.timestamp).toLocaleString()}</p>
-                    </div>
-                </Link>
-            ))}
-
-            {notifications?.length <= 0 &&
-                <p className="subheading">No notifications found, check back later</p>
-            }
+                {notifications?.length <= 0 &&
+                    <p className="subheading">No notifications found, check back later</p>
+                }
+            </div>
         </div>
-    </div>
-)
+    )
+}
 
 const mapStateToProps = state => ({
     notifications: state.global.notifications

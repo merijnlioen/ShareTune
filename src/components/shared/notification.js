@@ -43,10 +43,12 @@ const Notification = ({ notification, firebase }) => {
                     username={notification.sender.username}
                     isSmall
                 />
+
                 <div className="notification__content">
                     <p className="text">{notification.sender.username}</p>
                     <p className="text text--primary">{notification.notification}</p>
                 </div>
+                
                 <Close onClick={() => closeNotification()} />
             </div>
         </CSSTransition>
