@@ -21,8 +21,8 @@ const SearchForm = ({ firebase }) => {
 
         setSearchTimeout(setTimeout(() => {
             firebase.db.collection('users').orderBy('searchName')
-                .startAt(values.search)
-                .endAt(values.search + "\uf8ff")
+                .startAt(values.search.toLowercase())
+                .endAt(values.search.toLowercase() + "\uf8ff")
                 .get()
                 .then(snapshot => snapshot.docs.map(user => user.data()))
                 .then(users => setSearchResults(users))
