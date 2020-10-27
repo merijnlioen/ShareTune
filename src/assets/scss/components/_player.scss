@@ -197,3 +197,20 @@
         }
     }
 }
+
+.player__uploader {
+    padding: 10px 0;
+
+    a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-decoration: none;
+        color: $black;
+    }
+
+    p {
+        font-family: $secondary-font;
+        margin-left: 10px;
+    }
+}

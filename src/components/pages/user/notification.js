@@ -7,10 +7,10 @@ const Notification = ({ firebase, notification }) => {
 	const [sender, setSender] = useState()
 
     useEffect(() => {
-        getSenderAvatar()
+        getSender()
 	}, [])
 
-    const getSenderAvatar = async () => {
+    const getSender = async () => {
         if (!notification.sender.id) return
 
 		firebase.db.collection('users').doc(notification.sender.id).get()
